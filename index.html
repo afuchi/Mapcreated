@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miscreated Intel Map</title>
+<script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+<style>
+  body { margin: 0; font-family: Arial; background: #020617; color: #e5e7eb; display: flex; height: 100vh; overflow: hidden; }
+  #sidebar { width: 300px; background: #020617; border-right: 1px solid #111; padding: 10px; overflow-y: auto; flex-shrink: 0; z-index: 10; }
+  #mapWrap { flex: 1; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; cursor: grab; }
+  #mapWrap:active { cursor: grabbing; }
+  #mapContainer { position: relative; width: 100%; max-width: 1200px; transform-origin: 50% 50%; }
+  img { width: 100%; height: auto; display: block; pointer-events: none; }
+  #overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  
+  .marker { position: absolute; transform: translate(-50%, -50%); font-size: 18px; cursor: pointer; text-shadow: 0 0 5px rgba(0,0,0,0.8); z-index: 2; transition: transform 0.2s; }
+  .marker:hover { transform: translate(-50%, -50%) scale(1.5); z-index: 3; }
+  
+  .label { position: absolute; font-size: 11px; background: rgba(0,0,0,0.7); padding: 2px 6px; border-radius: 6px; transform: translate(-50%, -150%); white-space: nowrap; pointer-events: none; border: 1px solid #333; z-index: 2; }
+  
+  button, select, input[type="text"], input[type="file"] { margin: 5px 0; padding: 6px; border: none; border-radius: 6px; background: #1e293b; color: white; border: 1px solid #334155; font-family: Arial; }
+  button { cursor: pointer; }
+  button:hover { background: #334155; }
+  
+  .filter { display: block; margin-bottom: 5px; }
+  ul { list-style: none; padding: 0; }
+  li { padding: 5px; margin-bottom: 5px; background: #0f172a; border-radius: 4px; border: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+  li:hover { background: #1e293b; }
+  
+  .delete-btn { background: #7f1d1d; padding: 2px 6px; font-size: 12px; }
+  .delete-btn:hover { background: #991b1b; }
+  .pin-name { flex: 1; pointer-events: none; }
+  
+  /* Modals */
+  .modal-bg { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+  .modal { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; width: 300px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
+  
+  #infoCard { display: none; position: absolute; right: 20px; top: 20px; background: #0f172a; padding: 15px; border-radius: 8px; border: 1px solid #334155; width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 90; }
+</style>
+</head>
+<body>
+
+<!-- New Pin Modal -->
+<div id="pinModalBg" class="modal-bg">
+  <div class="modal">
+    <h3 style="margin-top:0;">Drop New Marker</h3>
+    <input type="text" id="pinNameInput" placeholder="Marker Name..." style="width: calc(100% - 15px); margin-bottom: 10px;">
+    
+    <label style="display: block; margin-bottom: 5px; font-size: 13px; color: #94a3b8;">Attach Screenshot (Optional)</label>
+    <input type="file" id="pinImageInput" accept="image/*" style="width: calc(100% - 15px); margin-bottom: 15px;">
+    
+    <div style="display: flex; gap: 10px;">
+      <button onclick="saveNewPin()" style="flex:1; background: #047857;">Save Pin</button>
+      <button onclick="closePinModal()" style="flex:1; background: #7f1d1d;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Info Card -->
+<div id="infoCard">
+  <button onclick="document.getElementById('infoCard').style.display='none'" style="float: right; background: transparent; border: none; font-size: 16px; color: #94a3b8; padding: 0;">&times;</button>
+  <h3 id="infoName" style="margin-top: 0; margin-bottom: 5px; color: #38bdf8;"></h3>
+  <div id="infoType" style="color: #94a3b8; font-size: 12px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;"></div>
+  <img id="infoImage" src="" style="width: 100%; border-radius: 4px; display: none; border: 1px solid #334155;">
+  <div id="infoCoords" style="margin-top: 10px; font-size: 11px; color: #64748b; font-family: monospace;"></div>
+</div>
+
+<div id="sidebar">
+  <h3>🧠 Intel Panel</h3>
+  
+  <div style="background: #0f172a; padding: 10px; border-radius: 6px; margin-bottom: 15px; border: 1px solid #1e293b;">
+    <select id="typeSelect" style="width: 100%; margin-bottom: 10px;">
+      <option value="car">🚗 Car</option>
+      <option value="military">🔫 Military</option>
+      <option value="bunker">🧱 Bunker</option>
+      <option value="tent">⛺ Tent</option>
+      <option value="cave">🕳️ Cave</option>
+      <option value="stash">📦 Stash</option>
+      <option value="home">🏠 Base</option>
+    </select>
+    <div style="display: flex; gap: 5px;">
+      <button onclick="setMode('marker')" id="placeBtn" style="flex: 1; background: #047857;">Place Pin</button>
+      <button onclick="clearLocalStore()" style="background: #7f1d1d;">Clear My Pins</button>
+    </div>
+    <small style="color: #94a3b8; display: block; margin-top: 5px;">Click "Place Pin", then click map to add personal marker.</small>
+  </div>
+
+  <h4>Filters</h4>
+  <div style="background: #0f172a; padding: 10px; border-radius: 6px; margin-bottom: 15px; border: 1px solid #1e293b;">
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('car')"> 🚗 Cars</label>
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('military')"> 🔫 Military</label>
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('bunker')"> 🧱 Bunkers</label>
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tent')"> ⛺ Tents</label>
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('cave')"> 🕳️ Caves</label>
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('stash')"> 📦 Stashes</label>
+    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('home')"> 🏠 Bases</label>
+  </div>
+
+  <h4>Global Intel</h4>
+  <ul id="globalPinList"></ul>
+
+  <h4>My Personal Notes</h4>
+  <ul id="localPinList"></ul>
+</div>
+
+<div id="mapWrap">
+  <div id="mapContainer">
+    <img src="map.jpg" alt="Miscreated Map" id="mapImage">
+    <div id="overlay"></div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('overlay');
+  const globalPinList = document.getElementById('globalPinList');
+  const localPinList = document.getElementById('localPinList');
+  const mapContainer = document.getElementById('mapContainer');
+  const mapWrap = document.getElementById('mapWrap');
+  const placeBtn = document.getElementById('placeBtn');
+  const pinModalBg = document.getElementById('pinModalBg');
+  const infoCard = document.getElementById('infoCard');
+
+  let mode = null;
+  let pz = null;
+  let pendingPin = null;
+
+  let filters = { car: true, military: true, bunker: true, tent: true, cave: true, stash: true, home: true };
+  const icons = { car: '🚗', military: '🔫', bunker: '🧱', tent: '⛺', cave: '🕳️', stash: '📦', home: '🏠' };
+  const defaultNames = { car: 'Car Spawn', military: 'Military Camp', bunker: 'Bunker', tent: 'Tents', cave: 'Cave', stash: 'Hidden Stash', home: 'My Base' };
+
+  let globalMarkers = [];
+  let localMarkers = JSON.parse(localStorage.getItem('my_markers') || '[]');
+
+  function init() {
+    // Initialize Panzoom
+    pz = Panzoom(mapContainer, {
+      maxScale: 15,
+      minScale: 1, // Cannot zoom out smaller than the screen
+      contain: 'outside' // Keep map from going off-screen
+    });
+    
+    // Hack to center map initially
+    setTimeout(() => {
+      pz.zoom(1);
+      pz.pan((mapWrap.offsetWidth - mapContainer.offsetWidth) / 2, (mapWrap.offsetHeight - mapContainer.offsetHeight) / 2);
+    }, 100);
+
+    mapWrap.addEventListener('wheel', pz.zoomWithWheel);
+
+    fetch('dataset.json')
+      .then(res => res.json())
+      .then(data => { globalMarkers = data; draw(); })
+      .catch(err => draw());
+  }
+
+  function setMode(newMode) {
+    if (mode === newMode) {
+      mode = null;
+      placeBtn.style.background = '#047857';
+      mapWrap.style.cursor = 'grab';
+      if (pz) pz.setOptions({ disablePan: false });
+    } else {
+      mode = newMode;
+      placeBtn.style.background = '#10b981';
+      mapWrap.style.cursor = 'crosshair';
+      if (pz) pz.setOptions({ disablePan: true });
+    }
+  }
+
+  function toggleFilter(type) { filters[type] = !filters[type]; draw(); }
+
+  function clearLocalStore() {
+    if(confirm("Delete all your personal markers? Global markers will stay.")) {
+      localMarkers = []; saveLocal(); draw();
+    }
+  }
+
+  function deleteLocalMarker(e, id) {
+    e.stopPropagation(); // Prevent zooming to pin
+    localMarkers = localMarkers.filter(m => m.id !== id);
+    saveLocal(); draw();
+    infoCard.style.display = 'none';
+  }
+
+  function saveLocal() { localStorage.setItem('my_markers', JSON.stringify(localMarkers)); }
+
+  // Info Card & Zoom Logic
+  function focusOnMarker(m) {
+    const scale = 4;
+    const cw = mapContainer.offsetWidth;
+    const ch = mapContainer.offsetHeight;
+    
+    // Target coordinate inside map
+    const targetX = (m.x / 100) * cw;
+    const targetY = (m.y / 100) * ch;
+
+    // Panzoom translation values are inherently unscaled coordinates
+    const panX = cw / 2 - targetX;
+    const panY = ch / 2 - targetY;
+    
+    // Disable Panzoom internal anims to prevent CSS overwrite crashes mid-flight
+    // Apply our own CSS transition so they resolve perfectly concurrently
+    mapContainer.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    pz.zoom(scale, { animate: false });
+    pz.pan(panX, panY, { animate: false });
+    
+    setTimeout(() => { mapContainer.style.transition = ''; }, 450);
+
+    // Populate and show Info Card
+    document.getElementById('infoName').innerText = `${icons[m.type]} ${m.name}`;
+    document.getElementById('infoType').innerText = m.source === 'local' ? 'Personal Intel' : 'Global Intel';
+    document.getElementById('infoCoords').innerText = `LAT: ${m.y.toFixed(2)} | LNG: ${m.x.toFixed(2)}`;
+    
+    const imgEl = document.getElementById('infoImage');
+    if (m.image) {
+      imgEl.src = m.image;
+      imgEl.style.display = 'block';
+    } else {
+      imgEl.style.display = 'none';
+    }
+    
+    infoCard.style.display = 'block';
+  }
+
+  function draw() {
+    overlay.innerHTML = ''; globalPinList.innerHTML = ''; localPinList.innerHTML = '';
+
+    const allMarkers = [
+      ...globalMarkers.map(m => ({ ...m, source: 'global' })),
+      ...localMarkers.map(m => ({ ...m, source: 'local' }))
+    ];
+
+    allMarkers.forEach((m) => {
+      if (!filters[m.type]) return;
+
+      // Render Map Marker
+      const icon = document.createElement('div');
+      icon.className = 'marker';
+      icon.style.left = m.x + '%';
+      icon.style.top = m.y + '%';
+      icon.innerText = icons[m.type];
+      
+      icon.onclick = (e) => {
+        e.stopPropagation();
+        focusOnMarker(m);
+      };
+      
+      const label = document.createElement('div');
+      label.className = 'label';
+      label.style.left = m.x + '%';
+      label.style.top = m.y + '%';
+      label.innerText = m.name;
+      
+      overlay.appendChild(icon); overlay.appendChild(label);
+
+      // Render Sidebar Entry
+      const li = document.createElement('li');
+      li.onclick = () => focusOnMarker(m);
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'pin-name';
+      titleSpan.innerText = `${icons[m.type]} ${m.name}`;
+      li.appendChild(titleSpan);
+
+      if (m.source === 'local') {
+        const delBtn = document.createElement('button');
+        delBtn.className = 'delete-btn';
+        delBtn.innerText = 'X';
+        delBtn.onclick = (e) => deleteLocalMarker(e, m.id);
+        li.appendChild(delBtn);
+        localPinList.appendChild(li);
+      } else {
+        globalPinList.appendChild(li);
+      }
+    });
+  }
+
+  // Handle map click
+  overlay.addEventListener('click', (e) => {
+    if (mode === 'marker') {
+      const rect = overlay.getBoundingClientRect();
+      const pX = ((e.clientX - rect.left) / rect.width) * 100;
+      const pY = ((e.clientY - rect.top) / rect.height) * 100;
+
+      const type = document.getElementById('typeSelect').value;
+      
+      pendingPin = { x: pX, y: pY, type: type };
+      document.getElementById('pinNameInput').value = defaultNames[type];
+      document.getElementById('pinImageInput').value = '';
+      pinModalBg.style.display = 'flex';
+      
+      setMode(null); // turn off placement mode
+    }
+  });
+
+  function closePinModal() {
+    pinModalBg.style.display = 'none';
+    pendingPin = null;
+  }
+
+  function saveNewPin() {
+    if (!pendingPin) return;
+
+    const name = document.getElementById('pinNameInput').value || 'Unknown';
+    const fileInput = document.getElementById('pinImageInput');
+    const file = fileInput.files[0];
+    
+    const finishSave = (imgData) => {
+      const newMarker = {
+        id: Date.now().toString(),
+        x: pendingPin.x,
+        y: pendingPin.y,
+        type: pendingPin.type,
+        name: name,
+        image: imgData // Base64 string or null
+      };
+      
+      localMarkers.push(newMarker);
+      saveLocal();
+      closePinModal();
+      draw();
+      focusOnMarker({...newMarker, source:'local'}); // Instantly show info card
+    };
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        // Compress image to Base64 to save localStorage quota
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 400; // max size for info card
+          let scaleSize = 1;
+          if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
+          
+          canvas.width = img.width * scaleSize;
+          canvas.height = img.height * scaleSize;
+          
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          
+          // Use JPEG compression
+          finishSave(canvas.toDataURL('image/jpeg', 0.8));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      finishSave(null);
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

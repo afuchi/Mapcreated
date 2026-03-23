@@ -1,0 +1,527 @@
+[
+  {
+    "id": "1",
+    "x": 8,
+    "y": 55,
+    "type": "bunker",
+    "name": "Turtle Bay Bunker"
+  },
+  {
+    "id": "2",
+    "x": 16,
+    "y": 58,
+    "type": "bunker",
+    "name": "Woodhaven Bunker 1"
+  },
+  {
+    "id": "3",
+    "x": 18,
+    "y": 60,
+    "type": "bunker",
+    "name": "Woodhaven Bunker 2"
+  },
+  {
+    "id": "4",
+    "x": 12,
+    "y": 73,
+    "type": "bunker",
+    "name": "Horseshoe Beach Bunker"
+  },
+  {
+    "id": "5",
+    "x": 18,
+    "y": 85,
+    "type": "bunker",
+    "name": "South West Bunker"
+  },
+  {
+    "id": "6",
+    "x": 25,
+    "y": 71,
+    "type": "bunker",
+    "name": "Sultan Bunker 1"
+  },
+  {
+    "id": "7",
+    "x": 27,
+    "y": 76,
+    "type": "bunker",
+    "name": "Sultan Bunker 2"
+  },
+  {
+    "id": "8",
+    "x": 30,
+    "y": 84,
+    "type": "bunker",
+    "name": "South Sultan Bunker"
+  },
+  {
+    "id": "9",
+    "x": 45,
+    "y": 76,
+    "type": "bunker",
+    "name": "Pinecrest Bunker"
+  },
+  {
+    "id": "10",
+    "x": 47,
+    "y": 82,
+    "type": "bunker",
+    "name": "South Pinecrest Bunker"
+  },
+  {
+    "id": "11",
+    "x": 62,
+    "y": 73,
+    "type": "bunker",
+    "name": "Brightmoor Bunker 1"
+  },
+  {
+    "id": "12",
+    "x": 65,
+    "y": 71,
+    "type": "bunker",
+    "name": "Brightmoor Bunker 2"
+  },
+  {
+    "id": "13",
+    "x": 74,
+    "y": 89,
+    "type": "bunker",
+    "name": "Lumber Yard Bunker"
+  },
+  {
+    "id": "14",
+    "x": 86,
+    "y": 39,
+    "type": "bunker",
+    "name": "Cape Bay Bunker 1"
+  },
+  {
+    "id": "15",
+    "x": 89,
+    "y": 44,
+    "type": "bunker",
+    "name": "Cape Bay Bunker 2"
+  },
+  {
+    "id": "16",
+    "x": 87,
+    "y": 38,
+    "type": "bunker",
+    "name": "Cape Bay Bunker 3"
+  },
+  {
+    "id": "17",
+    "x": 70,
+    "y": 40,
+    "type": "bunker",
+    "name": "Orca Dam Bunker"
+  },
+  {
+    "id": "18",
+    "x": 57,
+    "y": 42,
+    "type": "bunker",
+    "name": "Clyde Hill Bunker"
+  },
+  {
+    "id": "19",
+    "x": 43,
+    "y": 22,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 1"
+  },
+  {
+    "id": "20",
+    "x": 44,
+    "y": 24,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 2"
+  },
+  {
+    "id": "21",
+    "x": 47,
+    "y": 24,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 3"
+  },
+  {
+    "id": "22",
+    "x": 43,
+    "y": 28,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 4"
+  },
+  {
+    "id": "23",
+    "x": 45,
+    "y": 27,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 5"
+  },
+  {
+    "id": "24",
+    "x": 48,
+    "y": 26,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 6"
+  },
+  {
+    "id": "25",
+    "x": 42,
+    "y": 32,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 7"
+  },
+  {
+    "id": "26",
+    "x": 45,
+    "y": 33,
+    "type": "bunker",
+    "name": "Hayward Valley Bunker 8"
+  },
+  {
+    "id": "27",
+    "x": 52,
+    "y": 54,
+    "type": "bunker",
+    "name": "Center Map Bunker"
+  },
+  {
+    "id": "28",
+    "x": 40,
+    "y": 52,
+    "type": "bunker",
+    "name": "West Center Bunker"
+  },
+  {
+    "id": "29",
+    "x": 31,
+    "y": 28,
+    "type": "bunker",
+    "name": "West Hayward Bunker"
+  },
+  {
+    "id": "30",
+    "x": 25,
+    "y": 31,
+    "type": "bunker",
+    "name": "North West River Bunker"
+  },
+  {
+    "id": "31",
+    "x": 15,
+    "y": 48,
+    "type": "tent",
+    "name": "North Woodhaven Tents"
+  },
+  {
+    "id": "32",
+    "x": 18,
+    "y": 54,
+    "type": "tent",
+    "name": "Woodhaven Tents 1"
+  },
+  {
+    "id": "33",
+    "x": 20,
+    "y": 58,
+    "type": "tent",
+    "name": "Woodhaven Tents 2"
+  },
+  {
+    "id": "34",
+    "x": 15,
+    "y": 60,
+    "type": "tent",
+    "name": "South Woodhaven Tents"
+  },
+  {
+    "id": "35",
+    "x": 23,
+    "y": 82,
+    "type": "tent",
+    "name": "Airfield Tents"
+  },
+  {
+    "id": "36",
+    "x": 8,
+    "y": 71,
+    "type": "tent",
+    "name": "Horseshoe Beach Tents"
+  },
+  {
+    "id": "37",
+    "x": 28,
+    "y": 75,
+    "type": "tent",
+    "name": "Sultan Tents 1"
+  },
+  {
+    "id": "38",
+    "x": 31,
+    "y": 82,
+    "type": "tent",
+    "name": "South Sultan Tents"
+  },
+  {
+    "id": "39",
+    "x": 45,
+    "y": 85,
+    "type": "tent",
+    "name": "Pinecrest Tents"
+  },
+  {
+    "id": "40",
+    "x": 50,
+    "y": 89,
+    "type": "tent",
+    "name": "South Pinecrest Tents"
+  },
+  {
+    "id": "41",
+    "x": 55,
+    "y": 70,
+    "type": "tent",
+    "name": "West Brightmoor Tents"
+  },
+  {
+    "id": "42",
+    "x": 60,
+    "y": 74,
+    "type": "tent",
+    "name": "Brightmoor Tents"
+  },
+  {
+    "id": "43",
+    "x": 40,
+    "y": 14,
+    "type": "tent",
+    "name": "North Hayward Tents"
+  },
+  {
+    "id": "44",
+    "x": 34,
+    "y": 16,
+    "type": "tent",
+    "name": "Far North Tents"
+  },
+  {
+    "id": "45",
+    "x": 45,
+    "y": 20,
+    "type": "tent",
+    "name": "Hayward Valley Tents 1"
+  },
+  {
+    "id": "46",
+    "x": 42,
+    "y": 35,
+    "type": "tent",
+    "name": "Hayward Valley Tents 2"
+  },
+  {
+    "id": "47",
+    "x": 44,
+    "y": 40,
+    "type": "tent",
+    "name": "South Hayward Tents"
+  },
+  {
+    "id": "48",
+    "x": 40,
+    "y": 48,
+    "type": "tent",
+    "name": "NW Center Tents"
+  },
+  {
+    "id": "49",
+    "x": 47,
+    "y": 49,
+    "type": "tent",
+    "name": "North Center Tents"
+  },
+  {
+    "id": "50",
+    "x": 42,
+    "y": 52,
+    "type": "tent",
+    "name": "West Center Tents"
+  },
+  {
+    "id": "51",
+    "x": 45,
+    "y": 58,
+    "type": "tent",
+    "name": "South Center Tents"
+  },
+  {
+    "id": "52",
+    "x": 50,
+    "y": 53,
+    "type": "tent",
+    "name": "East Center Tents"
+  },
+  {
+    "id": "53",
+    "x": 55,
+    "y": 58,
+    "type": "tent",
+    "name": "Far East Center Tents"
+  },
+  {
+    "id": "54",
+    "x": 68,
+    "y": 30,
+    "type": "tent",
+    "name": "North Orca Dam Tents"
+  },
+  {
+    "id": "55",
+    "x": 70,
+    "y": 40,
+    "type": "tent",
+    "name": "Orca Dam Tents"
+  },
+  {
+    "id": "56",
+    "x": 68,
+    "y": 48,
+    "type": "tent",
+    "name": "South Orca Dam Tents"
+  },
+  {
+    "id": "57",
+    "x": 30,
+    "y": 42,
+    "type": "tent",
+    "name": "West River Tents"
+  },
+  {
+    "id": "58",
+    "x": 35,
+    "y": 52,
+    "type": "tent",
+    "name": "Cave Park Tents"
+  },
+  {
+    "id": "59",
+    "x": 21,
+    "y": 68,
+    "type": "tent",
+    "name": "River Fork Tents"
+  },
+  {
+    "id": "60",
+    "x": 45,
+    "y": 22,
+    "type": "car",
+    "name": "Hayward Valley Cars"
+  },
+  {
+    "id": "61",
+    "x": 46,
+    "y": 25,
+    "type": "car",
+    "name": "Hayward Valley Cars 2"
+  },
+  {
+    "id": "62",
+    "x": 44,
+    "y": 28,
+    "type": "car",
+    "name": "Hayward Valley Cars 3"
+  },
+  {
+    "id": "63",
+    "x": 38,
+    "y": 25,
+    "type": "car",
+    "name": "West Hayward Cars"
+  },
+  {
+    "id": "64",
+    "x": 62,
+    "y": 75,
+    "type": "car",
+    "name": "Brightmoor Cars"
+  },
+  {
+    "id": "65",
+    "x": 65,
+    "y": 72,
+    "type": "car",
+    "name": "Brightmoor Shore Cars"
+  },
+  {
+    "id": "66",
+    "x": 88,
+    "y": 40,
+    "type": "car",
+    "name": "Cape Bay Cars"
+  },
+  {
+    "id": "67",
+    "x": 43,
+    "y": 80,
+    "type": "car",
+    "name": "Pinecrest Cars"
+  },
+  {
+    "id": "68",
+    "x": 25,
+    "y": 78,
+    "type": "car",
+    "name": "Sultan Cars"
+  },
+  {
+    "id": "69",
+    "x": 18,
+    "y": 62,
+    "type": "car",
+    "name": "Woodhaven Cars"
+  },
+  {
+    "id": "70",
+    "x": 20,
+    "y": 90,
+    "type": "military",
+    "name": "Amalgamated Airfield"
+  },
+  {
+    "id": "71",
+    "x": 30,
+    "y": 60,
+    "type": "military",
+    "name": "Radio Tower Military"
+  },
+  {
+    "id": "72",
+    "x": 65,
+    "y": 30,
+    "type": "military",
+    "name": "North East Military Array"
+  },
+  {
+    "id": "73",
+    "x": 75,
+    "y": 88,
+    "type": "military",
+    "name": "South East Military Checkpoint"
+  },
+  {
+    "id": "74",
+    "x": 35,
+    "y": 32,
+    "type": "military",
+    "name": "West Center Military"
+  },
+  {
+    "id": "75",
+    "x": 12,
+    "y": 50,
+    "type": "military",
+    "name": "Far West Military Base"
+  }
+]
