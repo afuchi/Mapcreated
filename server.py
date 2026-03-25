@@ -30,13 +30,11 @@ class Marker(BaseModel):
     source: Optional[str] = "local" # We still call it local to re-use frontend styles
 
 DATA_FILE = "shared_pins.json"
+GLOBAL_FILE = "dataset.json"
 
 class SharedData(BaseModel):
     markers: List[dict]
     deleted_ids: List[str]
-
-DATA_FILE = "shared_pins.json"
-GLOBAL_FILE = "dataset.json"
 
 def load_shared_data() -> SharedData:
     if not os.path.exists(DATA_FILE):
@@ -83,6 +81,7 @@ def get_pins():
     
     # 2. Map shared markers by ID for quick lookup
     shared_lookup = {m["id"]: m for m in shared.markers}
+    handled_ids = set()
     
     # 3. Apply updates to global markers and add new ones
     final_list = []
@@ -91,13 +90,14 @@ def get_pins():
     for gm in merged:
         if gm["id"] in shared_lookup:
             final_list.append(shared_lookup[gm["id"]])
-            del shared_lookup[gm["id"]]
+            handled_ids.add(gm["id"])
         else:
             final_list.append({**gm, "source": "global"})
             
     # Add remaining shared markers (new ones)
-    for sm in shared_lookup.values():
-        final_list.append({**sm, "source": "local"})
+    for sm in shared.markers:
+        if sm["id"] not in handled_ids:
+            final_list.append({**sm, "source": "local"})
         
     return final_list
 
@@ -166,14 +166,14 @@ def get_wiki_info(location: str):
         for unwanted in soup.find_all(['aside', 'table']):
             unwanted.decompose()
             
-        summary = ""
+        summary_parts = []
         for p in soup.find_all('p'):
             text = p.get_text().strip()
             if text:
-                summary += text + "\n\n"
-            if len(summary) > 150:
+                summary_parts.append(text)
+            if len("\n\n".join(summary_parts)) > 150:
                 break
-        summary = summary.strip()
+        summary = "\n\n".join(summary_parts).strip()
                 
         # Try to find an image
         image = None

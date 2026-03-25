@@ -512,12 +512,25 @@
 
   function fetchSharedMarkers() {
     fetch('/api/pins')
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error('API not available');
+        return r.json();
+      })
       .then(data => {
         localMarkers = data;
         if (!isAnyMarkerDragging) draw();
       })
-      .catch(err => console.log('Error fetching shared markers', err));
+      .catch(err => {
+        console.log('API not available, falling back to dataset.json', err);
+        // Fallback: load dataset.json directly for static hosting (e.g. GitHub Pages)
+        fetch('dataset.json')
+          .then(r => r.json())
+          .then(data => {
+            localMarkers = data.map(m => ({...m, source: 'global'}));
+            if (!isAnyMarkerDragging) draw();
+          })
+          .catch(err2 => console.error('Failed to load dataset.json fallback', err2));
+      });
   }
 
   function setMode(newMode) {

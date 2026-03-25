@@ -1,12 +1,11 @@
 import json
 
 data = []
-idx = 1
+ctx = {"idx": 1}
 
 def add_point(x, y, type_, name):
-    global idx
-    data.append({"id": str(idx), "x": x, "y": y, "type": type_, "name": name})
-    idx += 1
+    data.append({"id": str(ctx["idx"]), "x": x, "y": y, "type": type_, "name": name})
+    ctx["idx"] += 1
 
 # Bunkers
 bunkers = [
