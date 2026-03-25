@@ -6,37 +6,326 @@
 <title>Miscreated Intel Map</title>
 <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
 <style>
-  body { margin: 0; font-family: Arial; background: #020617; color: #e5e7eb; display: flex; height: 100vh; overflow: hidden; }
-  #sidebar { width: 300px; background: #020617; border-right: 1px solid #111; padding: 10px; overflow-y: auto; flex-shrink: 0; z-index: 10; }
-  #mapWrap { flex: 1; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; cursor: grab; }
-  #mapWrap:active { cursor: grabbing; }
-  #mapContainer { position: relative; width: 100%; max-width: 1200px; transform-origin: 50% 50%; }
-  img { width: 100%; height: auto; display: block; pointer-events: none; }
-  #overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --bg-dark: #0f172a;
+    --panel-bg: rgba(15, 20, 30, 0.65);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --accent: #d4af37;
+    --accent-hover: #f1c40f;
+    --danger: #ef4444;
+  }
+
+  body { 
+    margin: 0; 
+    font-family: 'Inter', system-ui, sans-serif; 
+    background: #020617; 
+    color: var(--text-main); 
+    display: block; 
+    height: 100vh; 
+    overflow: hidden; 
+    font-size: 14px;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+  /* Map and Layout */
+  #mapWrap { 
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background: #000; 
+    cursor: crosshair; 
+    z-index: 1;
+  }
+  #mapWrap:active { cursor: crosshair; }
   
-  .marker { position: absolute; transform: translate(-50%, -50%); font-size: 18px; cursor: pointer; text-shadow: 0 0 5px rgba(0,0,0,0.8); z-index: 2; transition: transform 0.2s; }
-  .marker:hover { transform: translate(-50%, -50%) scale(1.5); z-index: 3; }
+  #mapContainer { 
+    position: relative; 
+    width: 100%; 
+    max-width: none; 
+    transform-origin: 50% 50%;
+  }
   
-  .label { position: absolute; font-size: 11px; background: rgba(0,0,0,0.7); padding: 2px 6px; border-radius: 6px; transform: translate(-50%, -150%); white-space: nowrap; pointer-events: none; border: 1px solid #333; z-index: 2; }
+  img#mapImage { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    pointer-events: none; 
+  }
   
-  button, select, input[type="text"], input[type="file"] { margin: 5px 0; padding: 6px; border: none; border-radius: 6px; background: #1e293b; color: white; border: 1px solid #334155; font-family: Arial; }
-  button { cursor: pointer; }
-  button:hover { background: #334155; }
+  #overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: auto; }
   
-  .filter { display: block; margin-bottom: 5px; }
-  ul { list-style: none; padding: 0; }
-  li { padding: 5px; margin-bottom: 5px; background: #0f172a; border-radius: 4px; border: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
-  li:hover { background: #1e293b; }
+  /* Sidebar */
+  #sidebar { 
+    position: absolute;
+    left: 24px;
+    top: 80px;
+    bottom: 24px;
+    width: 320px; 
+    background: var(--panel-bg); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--panel-border); 
+    border-radius: 16px;
+    padding: 24px; 
+    overflow-y: auto; 
+    z-index: 10; 
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+  }
+
+  #sidebar.collapsed {
+    transform: translateX(-120%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Main Toggle Button */
+  #sidebarToggle {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    z-index: 20;
+    width: 44px;
+    height: 44px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+  }
+  #sidebarToggle:hover {
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.05);
+    color: var(--accent-hover);
+  }
+
+  .sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
   
-  .delete-btn { background: #7f1d1d; padding: 2px 6px; font-size: 12px; }
-  .delete-btn:hover { background: #991b1b; }
-  .pin-name { flex: 1; pointer-events: none; }
+  /* Typography */
+  h1, h2, h3, h4 { 
+    margin: 0;
+    color: var(--accent);
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  /* Form Elements */
+  button, select, input[type="text"], input[type="file"] { 
+    width: 100%;
+    margin: 0; 
+    padding: 10px 12px; 
+    border: 1px solid rgba(255,255,255,0.15); 
+    border-radius: 8px; 
+    background: rgba(0, 0, 0, 0.3); 
+    color: var(--text-main); 
+    font-family: inherit; 
+    font-size: 14px; 
+    outline: none; 
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
   
-  /* Modals */
-  .modal-bg { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
-  .modal { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; width: 300px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
+  input::placeholder { color: rgba(255,255,255,0.4); }
   
-  #infoCard { display: none; position: absolute; right: 20px; top: 20px; background: #0f172a; padding: 15px; border-radius: 8px; border: 1px solid #334155; width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 90; }
+  select:focus, input[type="text"]:focus {
+    border-color: var(--accent);
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+  }
+
+  button { 
+    cursor: pointer; 
+    background: var(--accent); 
+    color: #000;
+    border: none;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+  button:hover { background: var(--accent-hover); box-shadow: 0 0 12px rgba(212, 175, 55, 0.4); transform: translateY(-1px); }
+  button:active { transform: translateY(0); }
+  
+  button.danger { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); color: var(--danger); box-shadow: none; font-family: 'Inter', sans-serif;}
+  button.danger:hover { background: var(--danger); color: #fff; box-shadow: 0 0 12px rgba(239, 68, 68, 0.4); }
+
+  button.outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-main); font-family: 'Inter', sans-serif; }
+  button.outline:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  /* Filters & Lists */
+  .filter { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; cursor: pointer; font-size: 14px; user-select: none; transition: color 0.2s; }
+  .filter:hover { color: #fff; }
+  .filter input { width: auto; margin: 0; cursor: pointer; accent-color: var(--accent); }
+  
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  li { 
+    padding: 10px 14px; 
+    background: rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(255,255,255,0.05); 
+    border-radius: 8px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    cursor: pointer; 
+    transition: all 0.2s; 
+  }
+  li:hover { border-color: var(--accent); background: rgba(0, 0, 0, 0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.2); transform: translateX(4px); }
+  
+  .delete-btn { width: auto; padding: 4px 8px; border-radius: 6px; margin-left: 8px; font-family: 'Inter', sans-serif; }
+  .pin-name { flex: 1; pointer-events: none; font-weight: 500; font-family: 'Inter', sans-serif; }
+  
+  /* Map Markers and Labels */
+  .marker-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    pointer-events: auto;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .marker-wrapper.dragging {
+    cursor: grabbing;
+    z-index: 1000;
+    transition: none;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  .marker-wrapper:hover { transform: translate(-50%, -50%) scale(1.1); z-index: 10; }
+  
+  .marker { 
+    font-size: 24px; 
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6)); 
+    user-select: none;
+  }
+  
+  .label-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Cinzel', serif;
+    font-size: 13px; 
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: rgba(10, 15, 20, 0.85); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--accent); 
+    padding: 6px 10px; 
+    border-radius: 8px; 
+    border: 1px solid rgba(212, 175, 55, 0.3); 
+    margin-top: -35px; /* Move label above marker */
+    white-space: nowrap; 
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4); 
+    text-transform: uppercase;
+    user-select: none;
+    position: relative;
+  }
+
+  .marker-del-x, .marker-lock-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(239, 68, 68, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: bold;
+    padding: 0;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    position: absolute;
+    top: -8px;
+  }
+  .marker-del-x { right: -8px; }
+  .marker-lock-btn { 
+    right: 16px; 
+    background: rgba(212, 175, 55, 0.8); 
+    color: black;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+  }
+  
+  .label-container:hover .marker-del-x, 
+  .label-container:hover .marker-lock-btn {
+    display: flex;
+  }
+  .marker-del-x:hover {
+    background: #ff4d4d;
+    transform: scale(1.2) rotate(90deg);
+  }
+  .marker-lock-btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.2);
+  }
+  
+  .marker-wrapper.unlocked { cursor: grab; }
+  .marker-wrapper.locked { cursor: default; }
+  .marker-wrapper.dragging { cursor: grabbing; z-index: 1000; transition: none; transform: translate(-50%, -50%) scale(1.1); }
+
+  
+  /* Tabs */
+  .tabs { display: flex; gap: 6px; margin-bottom: 8px; }
+  .tabs button { flex: 1; padding: 8px; font-size: 11px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); border-radius: 6px; box-shadow: none; font-family: 'Inter', sans-serif;}
+  .tabs button.active { background: rgba(212, 175, 55, 0.1); border-color: var(--accent); color: var(--accent); font-weight: 600; box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); }
+  .tabs button:hover:not(.active) { background: rgba(255,255,255,0.05); color: #fff; transform: none; box-shadow: none; }
+
+  /* Modals and Info Cards */
+  .modal-bg { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 100; align-items: center; justify-content: center; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .modal { background: var(--panel-bg); padding: 32px; border: 1px solid var(--panel-border); border-radius: 20px; width: 340px; box-shadow: 0 24px 48px rgba(0,0,0,0.6); display: flex; flex-direction: column; gap: 16px; position: relative; }
+  
+  #infoCard { display: none; position: absolute; right: 24px; top: 24px; background: var(--panel-bg); padding: 32px; border: 1px solid var(--panel-border); border-radius: 20px; width: 300px; box-shadow: 0 24px 48px rgba(0,0,0,0.6); z-index: 90; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  
+  .card-close { position: absolute; right: 20px; top: 20px; width: auto; background: transparent !important; color: rgba(255,255,255,0.5); padding: 4px; border: none !important; margin: 0; box-shadow: none !important; }
+  .card-close:hover { color: #fff; transform: scale(1.1); background: transparent !important; }
+  
+  #infoName { font-family: 'Cinzel', serif; font-size: 22px; color: var(--accent); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  #infoType { color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.1em; font-family: 'Inter', sans-serif;}
+  
+  #infoWikiText {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: none;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .panel-box { display: flex; flex-direction: column; gap: 12px; }
 </style>
 </head>
 <body>
@@ -44,64 +333,96 @@
 <!-- New Pin Modal -->
 <div id="pinModalBg" class="modal-bg">
   <div class="modal">
-    <h3 style="margin-top:0;">Drop New Marker</h3>
-    <input type="text" id="pinNameInput" placeholder="Marker Name..." style="width: calc(100% - 15px); margin-bottom: 10px;">
+    <h3 style="color: var(--accent); font-size: 18px;">Drop New Marker</h3>
+    <input type="text" id="pinNameInput" placeholder="Marker Name...">
     
-    <label style="display: block; margin-bottom: 5px; font-size: 13px; color: #94a3b8;">Attach Screenshot (Optional)</label>
-    <input type="file" id="pinImageInput" accept="image/*" style="width: calc(100% - 15px); margin-bottom: 15px;">
+    <label style="font-size: 12px; color: var(--text-muted); font-weight: 500;">Attach Visual Data (Optional)</label>
+    <input type="file" id="pinImageInput" accept="image/*">
     
-    <div style="display: flex; gap: 10px;">
-      <button onclick="saveNewPin()" style="flex:1; background: #047857;">Save Pin</button>
-      <button onclick="closePinModal()" style="flex:1; background: #7f1d1d;">Cancel</button>
+    <div style="display: flex; gap: 10px; margin-top: 8px;">
+      <button onclick="saveNewPin()" style="flex: 1;">Save Pin</button>
+      <button onclick="closePinModal()" class="danger" style="flex: 1;">Cancel</button>
     </div>
   </div>
 </div>
 
 <!-- Info Card -->
 <div id="infoCard">
-  <button onclick="document.getElementById('infoCard').style.display='none'" style="float: right; background: transparent; border: none; font-size: 16px; color: #94a3b8; padding: 0;">&times;</button>
-  <h3 id="infoName" style="margin-top: 0; margin-bottom: 5px; color: #38bdf8;"></h3>
-  <div id="infoType" style="color: #94a3b8; font-size: 12px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;"></div>
-  <img id="infoImage" src="" style="width: 100%; border-radius: 4px; display: none; border: 1px solid #334155;">
-  <div id="infoCoords" style="margin-top: 10px; font-size: 11px; color: #64748b; font-family: monospace;"></div>
+  <button onclick="document.getElementById('infoCard').style.display='none'" class="card-close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div id="infoName"></div>
+  <div id="infoType"></div>
+  <img id="infoImage" src="" style="width: 100%; border-radius: 6px; display: none; margin-bottom: 12px; object-fit: cover;">
+  <div id="infoCoords" style="font-size: 12px; color: var(--text-muted); font-family: monospace;"></div>
+  <div id="infoWikiText"></div>
 </div>
 
+<button id="sidebarToggle" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+
 <div id="sidebar">
-  <h3>🧠 Intel Panel</h3>
-  
-  <div style="background: #0f172a; padding: 10px; border-radius: 6px; margin-bottom: 15px; border: 1px solid #1e293b;">
-    <select id="typeSelect" style="width: 100%; margin-bottom: 10px;">
-      <option value="car">🚗 Car</option>
-      <option value="military">🔫 Military</option>
-      <option value="bunker">🧱 Bunker</option>
-      <option value="tent">⛺ Tent</option>
-      <option value="cave">🕳️ Cave</option>
-      <option value="stash">📦 Stash</option>
-      <option value="home">🏠 Base</option>
-    </select>
-    <div style="display: flex; gap: 5px;">
-      <button onclick="setMode('marker')" id="placeBtn" style="flex: 1; background: #047857;">Place Pin</button>
-      <button onclick="clearLocalStore()" style="background: #7f1d1d;">Clear My Pins</button>
+  <div class="sidebar-section">
+    <h3 style="color: var(--accent); font-size: 16px;">Data Uplink</h3>
+    <div class="panel-box">
+      <select id="typeSelect">
+        <option value="car">🚗 Car</option>
+        <option value="military">🔫 Military</option>
+        <option value="bunker">🧱 Bunker</option>
+        <option value="tent">⛺ Tent</option>
+                <option value="cave">🕳️ Cave</option>
+        <option value="stash">📦 Stash</option>
+        <option value="wreck">🛩️ Wreck</option>
+        <option value="gas">⛽ Gas Station</option>
+        <option value="tower">🗼 Tower</option>
+        <option value="tunnel">🚇 Tunnel</option>
+        <option value="location">📍 Location</option>
+        <option value="home">🏠 Base</option>
+        <option value="boat">⛵ Boat</option>
+        <option value="weapon">🔫 Weapon</option>
+      </select>
+      <button onclick="setMode('marker')" id="placeBtn">Place Marker</button>
+      <button onclick="clearSharedStore()" class="outline danger" style="margin-top: 4px;">Purge Shared Data</button>
     </div>
-    <small style="color: #94a3b8; display: block; margin-top: 5px;">Click "Place Pin", then click map to add personal marker.</small>
   </div>
 
-  <h4>Filters</h4>
-  <div style="background: #0f172a; padding: 10px; border-radius: 6px; margin-bottom: 15px; border: 1px solid #1e293b;">
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('car')"> 🚗 Cars</label>
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('military')"> 🔫 Military</label>
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('bunker')"> 🧱 Bunkers</label>
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tent')"> ⛺ Tents</label>
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('cave')"> 🕳️ Caves</label>
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('stash')"> 📦 Stashes</label>
-    <label class="filter"><input type="checkbox" checked onchange="toggleFilter('home')"> 🏠 Bases</label>
+  <div class="sidebar-section">
+    <h4 style="margin-bottom: 4px;">Filters</h4>
+    <div class="panel-box">
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('car')"> 🚗 Cars</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('military')"> 🔫 Military</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('bunker')"> 🧱 Bunkers</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tent')"> ⛺ Tents</label>
+            <label class="filter"><input type="checkbox" checked onchange="toggleFilter('cave')"> 🕳️ Caves</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('stash')"> 📦 Stashes</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('wreck')"> 🛩️ Wrecks</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('gas')"> ⛽ Gas Stations</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tower')"> 🗼 Towers</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tunnel')"> 🚇 Tunnels</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('location')"> 📍 Locations</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('home')"> 🏠 Bases</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('boat')"> ⛵ Boats</label>
+      <label class="filter"><input type="checkbox" checked onchange="toggleFilter('weapon')"> 🔫 Weapons</label>
+    </div>
   </div>
 
-  <h4>Global Intel</h4>
-  <ul id="globalPinList"></ul>
-
-  <h4>My Personal Notes</h4>
-  <ul id="localPinList"></ul>
+  <div class="sidebar-section">
+    <div class="tabs">
+      <button id="tabLocations" onclick="switchTab('locations')">Locations</button>
+      <button id="tabGlobal" onclick="switchTab('global')" class="active">Global Data</button>
+      <button id="tabLocal" onclick="switchTab('local')">Shared Live</button>
+    </div>
+    <div id="locationsPinView" style="display: none;">
+      <ul id="locationsPinList"></ul>
+    </div>
+    <div id="globalPinView">
+      <ul id="globalPinList"></ul>
+    </div>
+    <div id="localPinView" style="display: none;">
+      <ul id="localPinList"></ul>
+    </div>
+  </div>
 </div>
 
 <div id="mapWrap">
@@ -115,6 +436,7 @@
   const overlay = document.getElementById('overlay');
   const globalPinList = document.getElementById('globalPinList');
   const localPinList = document.getElementById('localPinList');
+  const locationsPinList = document.getElementById('locationsPinList');
   const mapContainer = document.getElementById('mapContainer');
   const mapWrap = document.getElementById('mapWrap');
   const placeBtn = document.getElementById('placeBtn');
@@ -124,45 +446,93 @@
   let mode = null;
   let pz = null;
   let pendingPin = null;
+  let isAnyMarkerDragging = false;
+  let draggedMarker = null;
+  const lockedStates = {}; // Store UID -> boolean lock state
+  let localMarkers = [];
 
-  let filters = { car: true, military: true, bunker: true, tent: true, cave: true, stash: true, home: true };
-  const icons = { car: '🚗', military: '🔫', bunker: '🧱', tent: '⛺', cave: '🕳️', stash: '📦', home: '🏠' };
-  const defaultNames = { car: 'Car Spawn', military: 'Military Camp', bunker: 'Bunker', tent: 'Tents', cave: 'Cave', stash: 'Hidden Stash', home: 'My Base' };
+  let filters = { car: true, military: true, bunker: true, tent: true, cave: true, stash: true, home: true, wreck: true, gas: true, tower: true, tunnel: true, location: true, boat: true, weapon: true };
+  const icons = { car: '🚗', military: '🏰', bunker: '🧱', tent: '⛺', cave: '🕳️', stash: '📦', home: '🏠', wreck: '🛩️', gas: '⛽', tower: '🗼', tunnel: '🚇', location: '📍', boat: '⛵', weapon: '🔫' };
+  const defaultNames = { car: 'Vehicle Spawn', military: 'Military Outpost', bunker: 'Bunker', tent: 'Tents', cave: 'Cave', stash: 'Hidden Stash', home: 'My Base', wreck: 'Wreck', gas: 'Gas Station', tower: 'Tower', tunnel: 'Tunnel', location: 'Point of Interest', boat: 'Boat Spawn', weapon: 'Weapon Cache' };
 
-  let globalMarkers = [];
-  let localMarkers = JSON.parse(localStorage.getItem('my_markers') || '[]');
+  function clampPan(animate) {
+    if (!pz) return;
+    const scale = pz.getScale();
+    const pan = pz.getPan();
+    let x = pan.x;
+    let y = pan.y;
+    
+    const cw = mapContainer.offsetWidth;
+    const ch = mapContainer.offsetHeight;
+    const ww = mapWrap.offsetWidth;
+    const wh = mapWrap.offsetHeight;
+    
+    let boundX = Math.max(0, (cw * scale - ww) / 2 / scale);
+    let boundY = Math.max(0, (ch * scale - wh) / 2 / scale);
+    
+    let clamped = false;
+    if (x > boundX) { x = boundX; clamped = true; }
+    if (x < -boundX) { x = -boundX; clamped = true; }
+    if (y > boundY) { y = boundY; clamped = true; }
+    if (y < -boundY) { y = -boundY; clamped = true; }
+    
+    if (clamped) {
+      pz.pan(x, y, { animate: animate });
+    }
+  }
 
   function init() {
-    // Initialize Panzoom
     pz = Panzoom(mapContainer, {
       maxScale: 15,
-      minScale: 1, // Cannot zoom out smaller than the screen
-      contain: 'outside' // Keep map from going off-screen
+      minScale: 0.1
     });
     
-    // Hack to center map initially
     setTimeout(() => {
       pz.zoom(1);
-      pz.pan((mapWrap.offsetWidth - mapContainer.offsetWidth) / 2, (mapWrap.offsetHeight - mapContainer.offsetHeight) / 2);
+      pz.pan(0, 0);
     }, 100);
 
-    mapWrap.addEventListener('wheel', pz.zoomWithWheel);
+    mapWrap.addEventListener('wheel', (e) => {
+      pz.zoomWithWheel(e);
+      clampPan(false);
+    });
 
-    fetch('dataset.json')
-      .then(res => res.json())
-      .then(data => { globalMarkers = data; draw(); })
-      .catch(err => draw());
+    mapContainer.addEventListener('panzoomend', () => {
+      clampPan(true);
+    });
+
+    // Initial fetch of the complete consolidated marker set
+    fetchSharedMarkers();
+
+    // Start polling shared markers
+    setInterval(() => {
+      if (!isAnyMarkerDragging) fetchSharedMarkers();
+    }, 3000);
+  }
+
+  function fetchSharedMarkers() {
+    fetch('/api/pins')
+      .then(r => r.json())
+      .then(data => {
+        localMarkers = data;
+        if (!isAnyMarkerDragging) draw();
+      })
+      .catch(err => console.log('Error fetching shared markers', err));
   }
 
   function setMode(newMode) {
     if (mode === newMode) {
       mode = null;
-      placeBtn.style.background = '#047857';
-      mapWrap.style.cursor = 'grab';
+      placeBtn.innerText = 'Place Marker';
+      placeBtn.style.background = '';
+      placeBtn.style.color = '';
+      mapWrap.style.cursor = 'crosshair';
       if (pz) pz.setOptions({ disablePan: false });
     } else {
       mode = newMode;
-      placeBtn.style.background = '#10b981';
+      placeBtn.innerText = 'Select Map Location...';
+      placeBtn.style.background = 'var(--accent-hover)';
+      placeBtn.style.color = '#fff';
       mapWrap.style.cursor = 'crosshair';
       if (pz) pz.setOptions({ disablePan: true });
     }
@@ -170,49 +540,51 @@
 
   function toggleFilter(type) { filters[type] = !filters[type]; draw(); }
 
-  function clearLocalStore() {
-    if(confirm("Delete all your personal markers? Global markers will stay.")) {
-      localMarkers = []; saveLocal(); draw();
+  function clearSharedStore() {
+    if(confirm("Are you sure you want to purge ALL shared data? This clears it for everyone!")) {
+      fetch('/api/pins/purge', { method: 'POST' })
+        .then(() => fetchSharedMarkers());
     }
   }
 
   function deleteLocalMarker(e, id) {
-    e.stopPropagation(); // Prevent zooming to pin
-    localMarkers = localMarkers.filter(m => m.id !== id);
-    saveLocal(); draw();
-    infoCard.style.display = 'none';
+    e.stopPropagation();
+    fetch(`/api/pins/${id}`, { method: 'DELETE' })
+      .then(() => {
+        infoCard.style.display = 'none';
+        fetchSharedMarkers();
+      });
   }
 
-  function saveLocal() { localStorage.setItem('my_markers', JSON.stringify(localMarkers)); }
-
-  // Info Card & Zoom Logic
   function focusOnMarker(m) {
     const scale = 4;
     const cw = mapContainer.offsetWidth;
     const ch = mapContainer.offsetHeight;
     
-    // Target coordinate inside map
-    const targetX = (m.x / 100) * cw;
-    const targetY = (m.y / 100) * ch;
+    const adjustedX = 2.0 + (m.x / 100) * 96.0;
+    const adjustedY = 1.54 + (m.y / 100) * 96.92;
 
-    // Panzoom translation values are inherently unscaled coordinates
+    const targetX = (adjustedX / 100) * cw;
+    const targetY = (adjustedY / 100) * ch;
+
     const panX = cw / 2 - targetX;
     const panY = ch / 2 - targetY;
     
-    // Disable Panzoom internal anims to prevent CSS overwrite crashes mid-flight
-    // Apply our own CSS transition so they resolve perfectly concurrently
     mapContainer.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     pz.zoom(scale, { animate: false });
     pz.pan(panX, panY, { animate: false });
     
     setTimeout(() => { mapContainer.style.transition = ''; }, 450);
 
-    // Populate and show Info Card
     document.getElementById('infoName').innerText = `${icons[m.type]} ${m.name}`;
-    document.getElementById('infoType').innerText = m.source === 'local' ? 'Personal Intel' : 'Global Intel';
+    document.getElementById('infoType').innerText = m.source === 'local' ? 'Shared Live Marker' : 'Global Dataset';
     document.getElementById('infoCoords').innerText = `LAT: ${m.y.toFixed(2)} | LNG: ${m.x.toFixed(2)}`;
     
     const imgEl = document.getElementById('infoImage');
+    const wikiTextEl = document.getElementById('infoWikiText');
+    wikiTextEl.style.display = 'none';
+    wikiTextEl.innerHTML = '';
+    
     if (m.image) {
       imgEl.src = m.image;
       imgEl.style.display = 'block';
@@ -221,40 +593,174 @@
     }
     
     infoCard.style.display = 'block';
+
+    const wikiKeywords = ['Woodhaven', 'Brightmoor', 'Hayward Valley', 'Pinecrest', 'Sultan', 'Cape Bay', 'Horseshoe Beach', 'Turtle Bay', 'Orca Dam', 'Clyde Hill', 'Lumber Yard', 'Airfield'];
+    let wikiQuery = null;
+    for (let kw of wikiKeywords) {
+      if (m.name.includes(kw)) { wikiQuery = kw; break; }
+    }
+
+    if (wikiQuery) {
+      wikiTextEl.innerText = "Loading lore...";
+      wikiTextEl.style.display = 'block';
+      fetch(`/api/wiki/${encodeURIComponent(wikiQuery)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.summary) {
+            wikiTextEl.innerText = data.summary;
+            if (!m.image && data.image) {
+              imgEl.src = data.image;
+              imgEl.style.display = 'block';
+            }
+          } else {
+            wikiTextEl.style.display = 'none';
+          }
+        })
+        .catch(err => {
+          wikiTextEl.style.display = 'none';
+        });
+    }
+  }
+
+  function onMouseMoveGlobal(e) {
+    if (!draggedMarker) return;
+    isAnyMarkerDragging = true;
+    draggedMarker.wrapper.dataset.dragged = "true";
+    
+    const rect = overlay.getBoundingClientRect();
+    const pX = ((e.clientX - rect.left) / rect.width) * 100;
+    const pY = ((e.clientY - rect.top) / rect.height) * 100;
+    
+    draggedMarker.wrapper.style.left = pX + '%';
+    draggedMarker.wrapper.style.top = pY + '%';
+  }
+
+  function onMouseUpGlobal(e) {
+    if (!draggedMarker) return;
+    
+    const m = draggedMarker.marker;
+    const wrapper = draggedMarker.wrapper;
+    
+    wrapper.classList.remove('dragging');
+    if (pz) pz.setOptions({ disablePan: false });
+
+    const rect = overlay.getBoundingClientRect();
+    const pX = ((e.clientX - rect.left) / rect.width) * 100;
+    const pY = ((e.clientY - rect.top) / rect.height) * 100;
+
+    const gridX = ((pX - 2.0) / 96.0) * 100;
+    const gridY = ((pY - 1.54) / 96.92) * 100;
+
+    // Update m in place to avoid flickering before the re-fetch
+    m.x = gridX;
+    m.y = gridY;
+
+    // Save movement - Reuse saveNewPin logic (simplified call)
+    saveNewPin({
+      id: m.id,
+      x: gridX,
+      y: gridY,
+      type: m.type,
+      name: m.name,
+      image: m.image || null
+    });
+
+    draggedMarker = null;
+    isAnyMarkerDragging = false;
+    
+    window.removeEventListener('mousemove', onMouseMoveGlobal);
+    window.removeEventListener('mouseup', onMouseUpGlobal);
   }
 
   function draw() {
-    overlay.innerHTML = ''; globalPinList.innerHTML = ''; localPinList.innerHTML = '';
+    overlay.innerHTML = ''; globalPinList.innerHTML = ''; localPinList.innerHTML = ''; locationsPinList.innerHTML = '';
 
-    const allMarkers = [
-      ...globalMarkers.map(m => ({ ...m, source: 'global' })),
-      ...localMarkers.map(m => ({ ...m, source: 'local' }))
-    ];
+    // localMarkers now contains the complete consolidated set from /api/pins
+    const allMarkers = localMarkers;
 
     allMarkers.forEach((m) => {
       if (!filters[m.type]) return;
 
-      // Render Map Marker
+      const adjustedX = 2.0 + (m.x / 100) * 96.0;
+      const adjustedY = 1.54 + (m.y / 100) * 96.92;
+
+      const wrapper = document.createElement('div');
+      
+      // Use persistent lock state
+      if (lockedStates[m.id] === undefined) lockedStates[m.id] = true;
+      const isLocked = lockedStates[m.id];
+      
+      wrapper.className = 'marker-wrapper' + (isLocked ? ' locked' : ' unlocked');
+      wrapper.style.left = adjustedX + '%';
+      wrapper.style.top = adjustedY + '%';
+      
+      const label = document.createElement('div');
+      label.className = 'label-container';
+      label.innerText = m.name;
+
+      // Lock Toggle Button
+      const lockBtn = document.createElement('div');
+      lockBtn.className = 'marker-lock-btn';
+      lockBtn.innerHTML = isLocked ? '🔒' : '🔓';
+      lockBtn.title = isLocked ? 'Unlock to Move' : 'Lock Marker';
+      lockBtn.onclick = (e) => {
+        e.stopPropagation();
+        lockedStates[m.id] = !lockedStates[m.id];
+        // Lock/unlock map panning based on whether any pin is unlocked
+        const anyUnlocked = Object.values(lockedStates).some(v => v === false);
+        if (pz) pz.setOptions({ disablePan: anyUnlocked });
+        draw(); // Redraw immediately to update icons
+      };
+      label.appendChild(lockBtn);
+
+      const delX = document.createElement('div');
+      delX.className = 'marker-del-x';
+      delX.innerText = '×';
+      delX.title = 'Delete Marker';
+      delX.onclick = (e) => {
+        e.stopPropagation();
+        deleteLocalMarker(e, m.id);
+      };
+      label.appendChild(delX);
+
       const icon = document.createElement('div');
       icon.className = 'marker';
-      icon.style.left = m.x + '%';
-      icon.style.top = m.y + '%';
       icon.innerText = icons[m.type];
       
-      icon.onclick = (e) => {
+      wrapper.appendChild(label);
+      wrapper.appendChild(icon);
+      overlay.appendChild(wrapper);
+
+      wrapper.onclick = (e) => {
+        if (wrapper.dataset.dragged === "true") {
+          wrapper.dataset.dragged = "false";
+          return;
+        }
         e.stopPropagation();
         focusOnMarker(m);
       };
-      
-      const label = document.createElement('div');
-      label.className = 'label';
-      label.style.left = m.x + '%';
-      label.style.top = m.y + '%';
-      label.innerText = m.name;
-      
-      overlay.appendChild(icon); overlay.appendChild(label);
 
-      // Render Sidebar Entry
+      // Add dragging logic
+      wrapper.addEventListener('mousedown', (e) => {
+        if (e.target.className === 'marker-del-x' || e.target.className === 'marker-lock-btn') return;
+        
+        if (lockedStates[m.id]) return; // Prevent drag if locked
+        
+        draggedMarker = { marker: m, wrapper: wrapper };
+
+
+        wrapper.classList.add('dragging');
+        
+        if (pz) pz.setOptions({ disablePan: true });
+        
+        window.addEventListener('mousemove', onMouseMoveGlobal);
+        window.addEventListener('mouseup', onMouseUpGlobal);
+        
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      // List addition
       const li = document.createElement('li');
       li.onclick = () => focusOnMarker(m);
       
@@ -263,43 +769,65 @@
       titleSpan.innerText = `${icons[m.type]} ${m.name}`;
       li.appendChild(titleSpan);
 
-      if (m.source === 'local') {
+      if (m.source === 'local' || m.source === 'global') { // Show delete in list too
         const delBtn = document.createElement('button');
-        delBtn.className = 'delete-btn';
-        delBtn.innerText = 'X';
-        delBtn.onclick = (e) => deleteLocalMarker(e, m.id);
+        delBtn.className = 'delete-btn danger outline';
+        delBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+        delBtn.onclick = (e) => {
+          deleteLocalMarker(e, m.id);
+        };
         li.appendChild(delBtn);
-        localPinList.appendChild(li);
-      } else {
-        globalPinList.appendChild(li);
+        
+        if (m.source === 'local') localPinList.appendChild(li);
+        else if (m.type === 'location') locationsPinList.appendChild(li);
+        else globalPinList.appendChild(li);
       }
     });
   }
 
-  // Handle map click
   overlay.addEventListener('click', (e) => {
     if (mode === 'marker') {
       const rect = overlay.getBoundingClientRect();
       const pX = ((e.clientX - rect.left) / rect.width) * 100;
       const pY = ((e.clientY - rect.top) / rect.height) * 100;
 
+      const gridX = ((pX - 2.0) / 96.0) * 100;
+      const gridY = ((pY - 1.54) / 96.92) * 100;
+
       const type = document.getElementById('typeSelect').value;
       
-      pendingPin = { x: pX, y: pY, type: type };
+      pendingPin = { x: gridX, y: gridY, type: type };
       document.getElementById('pinNameInput').value = defaultNames[type];
       document.getElementById('pinImageInput').value = '';
       pinModalBg.style.display = 'flex';
       
-      setMode(null); // turn off placement mode
+      setMode(null);
     }
   });
 
   function closePinModal() {
     pinModalBg.style.display = 'none';
     pendingPin = null;
+    if (pz) pz.setOptions({ disablePan: false });
   }
 
-  function saveNewPin() {
+  function saveNewPin(updateData = null) {
+    // If updateData is provided (from drag), skip modal
+    if (updateData) {
+      console.log('Updating marker on server:', updateData);
+      fetch('/api/pins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updateData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        fetchSharedMarkers();
+      })
+      .catch(err => console.error('Error updating marker:', err));
+      return;
+    }
+
     if (!pendingPin) return;
 
     const name = document.getElementById('pinNameInput').value || 'Unknown';
@@ -308,39 +836,42 @@
     
     const finishSave = (imgData) => {
       const newMarker = {
-        id: Date.now().toString(),
+        id: Date.now().toString() + Math.floor(Math.random() * 1000),
         x: pendingPin.x,
         y: pendingPin.y,
         type: pendingPin.type,
         name: name,
-        image: imgData // Base64 string or null
+        image: imgData
       };
       
-      localMarkers.push(newMarker);
-      saveLocal();
-      closePinModal();
-      draw();
-      focusOnMarker({...newMarker, source:'local'}); // Instantly show info card
+      fetch('/api/pins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newMarker)
+      })
+      .then(res => res.json())
+      .then(data => {
+        closePinModal();
+        fetchSharedMarkers();
+        // Give it a tiny bit of time for the re-draw to happen, then focus
+        setTimeout(() => focusOnMarker({...newMarker, source: 'local'}), 100);
+      })
+      .catch(err => console.error('Error saving new marker:', err));
     };
 
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        // Compress image to Base64 to save localStorage quota
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const MAX_WIDTH = 400; // max size for info card
+          const MAX_WIDTH = 400;
           let scaleSize = 1;
           if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
-          
           canvas.width = img.width * scaleSize;
           canvas.height = img.height * scaleSize;
-          
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          
-          // Use JPEG compression
           finishSave(canvas.toDataURL('image/jpeg', 0.8));
         };
         img.src = e.target.result;
@@ -348,6 +879,29 @@
       reader.readAsDataURL(file);
     } else {
       finishSave(null);
+    }
+  }
+
+  // Helper for direct global access
+  window.deleteLocalMarker = deleteLocalMarker;
+
+  function switchTab(tab) {
+    document.getElementById('tabGlobal').classList.remove('active');
+    document.getElementById('tabLocal').classList.remove('active');
+    document.getElementById('tabLocations').classList.remove('active');
+    document.getElementById('globalPinView').style.display = 'none';
+    document.getElementById('localPinView').style.display = 'none';
+    document.getElementById('locationsPinView').style.display = 'none';
+
+    if (tab === 'global') {
+      document.getElementById('tabGlobal').classList.add('active');
+      document.getElementById('globalPinView').style.display = 'block';
+    } else if (tab === 'local') {
+      document.getElementById('tabLocal').classList.add('active');
+      document.getElementById('localPinView').style.display = 'block';
+    } else if (tab === 'locations') {
+      document.getElementById('tabLocations').classList.add('active');
+      document.getElementById('locationsPinView').style.display = 'block';
     }
   }
 

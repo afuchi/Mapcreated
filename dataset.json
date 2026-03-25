@@ -417,111 +417,1014 @@
     "x": 45,
     "y": 22,
     "type": "car",
-    "name": "Hayward Valley Cars"
+    "name": "Hayward Valley Car"
   },
   {
     "id": "61",
     "x": 46,
     "y": 25,
     "type": "car",
-    "name": "Hayward Valley Cars 2"
+    "name": "Hayward Valley Bus"
   },
   {
     "id": "62",
     "x": 44,
     "y": 28,
     "type": "car",
-    "name": "Hayward Valley Cars 3"
+    "name": "Hayward Valley Sedan"
   },
   {
     "id": "63",
     "x": 38,
     "y": 25,
     "type": "car",
-    "name": "West Hayward Cars"
+    "name": "West Hayward Car"
   },
   {
     "id": "64",
     "x": 62,
     "y": 75,
     "type": "car",
-    "name": "Brightmoor Cars"
+    "name": "Brightmoor Sedan"
   },
   {
     "id": "65",
     "x": 65,
     "y": 72,
     "type": "car",
-    "name": "Brightmoor Shore Cars"
+    "name": "Brightmoor Shore Car"
   },
   {
     "id": "66",
     "x": 88,
     "y": 40,
     "type": "car",
-    "name": "Cape Bay Cars"
+    "name": "Cape Bay Sedan"
   },
   {
     "id": "67",
     "x": 43,
     "y": 80,
     "type": "car",
-    "name": "Pinecrest Cars"
+    "name": "Pinecrest Car"
   },
   {
     "id": "68",
     "x": 25,
     "y": 78,
     "type": "car",
-    "name": "Sultan Cars"
+    "name": "Sultan Pick-Up"
   },
   {
     "id": "69",
     "x": 18,
     "y": 62,
     "type": "car",
-    "name": "Woodhaven Cars"
+    "name": "Woodhaven Sedan"
   },
   {
     "id": "70",
-    "x": 20,
-    "y": 90,
-    "type": "military",
-    "name": "Amalgamated Airfield"
+    "x": 35,
+    "y": 12,
+    "type": "car",
+    "name": "North Hayward Truck"
   },
   {
     "id": "71",
+    "x": 40,
+    "y": 44,
+    "type": "car",
+    "name": "Cedar Park Bus"
+  },
+  {
+    "id": "72",
+    "x": 42,
+    "y": 48,
+    "type": "car",
+    "name": "Cedar Park Car"
+  },
+  {
+    "id": "73",
+    "x": 48,
+    "y": 43,
+    "type": "car",
+    "name": "Cedar Park Pick-Up"
+  },
+  {
+    "id": "74",
+    "x": 31,
+    "y": 56,
+    "type": "car",
+    "name": "West Center Car"
+  },
+  {
+    "id": "75",
+    "x": 17,
+    "y": 84,
+    "type": "car",
+    "name": "Airfield Cargo Truck"
+  },
+  {
+    "id": "76",
+    "x": 22,
+    "y": 85,
+    "type": "car",
+    "name": "Airfield Bus"
+  },
+  {
+    "id": "77",
+    "x": 20,
+    "y": 86,
+    "type": "car",
+    "name": "Airfield ATV"
+  },
+  {
+    "id": "78",
+    "x": 18,
+    "y": 82,
+    "type": "car",
+    "name": "Airfield Pick-Up"
+  },
+  {
+    "id": "79",
+    "x": 34,
+    "y": 84,
+    "type": "car",
+    "name": "Pinecrest West Car"
+  },
+  {
+    "id": "80",
+    "x": 45,
+    "y": 82,
+    "type": "car",
+    "name": "Pinecrest East Car"
+  },
+  {
+    "id": "81",
+    "x": 49,
+    "y": 86,
+    "type": "car",
+    "name": "South Pinecrest Car"
+  },
+  {
+    "id": "82",
+    "x": 67,
+    "y": 82,
+    "type": "car",
+    "name": "Brightmoor East Car"
+  },
+  {
+    "id": "83",
+    "x": 55,
+    "y": 68,
+    "type": "car",
+    "name": "Lumber Yard Truck"
+  },
+  {
+    "id": "84",
+    "x": 55,
+    "y": 58,
+    "type": "car",
+    "name": "Center Route Car"
+  },
+  {
+    "id": "85",
+    "x": 78,
+    "y": 28,
+    "type": "car",
+    "name": "NE Coast Car"
+  },
+  {
+    "id": "86",
+    "x": 15,
+    "y": 88,
+    "type": "car",
+    "name": "Sultan Outskirts Car"
+  },
+  {
+    "id": "87",
+    "x": 62,
+    "y": 28,
+    "type": "car",
+    "name": "North Orca Dam Car"
+  },
+  {
+    "id": "88",
+    "x": 60,
+    "y": 45,
+    "type": "car",
+    "name": "Clyde Hill Outskirts Car"
+  },
+  {
+    "id": "89",
+    "x": 45,
+    "y": 26,
+    "type": "car",
+    "name": "Hayward Valley Police Car"
+  },
+  {
+    "id": "90",
+    "x": 44,
+    "y": 24,
+    "type": "car",
+    "name": "Hayward Valley Taxi"
+  },
+  {
+    "id": "91",
+    "x": 28,
+    "y": 73,
+    "type": "car",
+    "name": "Sultan Tractor"
+  },
+  {
+    "id": "92",
+    "x": 26,
+    "y": 70,
+    "type": "car",
+    "name": "Sultan Baggage Cart"
+  },
+  {
+    "id": "93",
+    "x": 14,
+    "y": 56,
+    "type": "car",
+    "name": "Woodhaven Buggy"
+  },
+  {
+    "id": "94",
+    "x": 16,
+    "y": 54,
+    "type": "car",
+    "name": "Woodhaven Sedan"
+  },
+  {
+    "id": "95",
+    "x": 12,
+    "y": 56,
+    "type": "boat",
+    "name": "Turtle Bay Boat"
+  },
+  {
+    "id": "96",
+    "x": 18,
+    "y": 65,
+    "type": "boat",
+    "name": "Woodhaven Coast Boat"
+  },
+  {
+    "id": "97",
+    "x": 26,
+    "y": 35,
+    "type": "boat",
+    "name": "West River Boat"
+  },
+  {
+    "id": "98",
+    "x": 28,
+    "y": 75,
+    "type": "boat",
+    "name": "Sultan Dock Boat"
+  },
+  {
+    "id": "99",
+    "x": 32,
+    "y": 65,
+    "type": "boat",
+    "name": "Center River Boat"
+  },
+  {
+    "id": "100",
+    "x": 42,
+    "y": 52,
+    "type": "boat",
+    "name": "Lake Boat 1"
+  },
+  {
+    "id": "101",
+    "x": 45,
+    "y": 50,
+    "type": "boat",
+    "name": "Lake Boat 2"
+  },
+  {
+    "id": "102",
+    "x": 66,
+    "y": 72,
+    "type": "boat",
+    "name": "Brightmoor Shore Boat"
+  },
+  {
+    "id": "103",
+    "x": 78,
+    "y": 55,
+    "type": "boat",
+    "name": "East Coast Boat 1"
+  },
+  {
+    "id": "104",
+    "x": 82,
+    "y": 45,
+    "type": "boat",
+    "name": "East Coast Boat 2"
+  },
+  {
+    "id": "105",
+    "x": 38,
+    "y": 2,
+    "type": "boat",
+    "name": "North Shore Boat"
+  },
+  {
+    "id": "106",
+    "x": 92,
+    "y": 48,
+    "type": "boat",
+    "name": "Cape Bay Shore Boat"
+  },
+  {
+    "id": "107",
+    "x": 8,
+    "y": 52,
+    "type": "boat",
+    "name": "Turtle Bay North Boat"
+  },
+  {
+    "id": "108",
+    "x": 20,
+    "y": 92,
+    "type": "boat",
+    "name": "Airfield Coast Boat"
+  },
+  {
+    "id": "109",
+    "x": 20,
+    "y": 84,
+    "type": "military",
+    "name": "Amalgamated Airfield Command"
+  },
+  {
+    "id": "110",
     "x": 30,
     "y": 60,
     "type": "military",
     "name": "Radio Tower Military"
   },
   {
-    "id": "72",
+    "id": "111",
     "x": 65,
     "y": 30,
     "type": "military",
     "name": "North East Military Array"
   },
   {
-    "id": "73",
+    "id": "112",
     "x": 75,
     "y": 88,
     "type": "military",
     "name": "South East Military Checkpoint"
   },
   {
-    "id": "74",
+    "id": "113",
     "x": 35,
     "y": 32,
     "type": "military",
     "name": "West Center Military"
   },
   {
-    "id": "75",
+    "id": "114",
     "x": 12,
     "y": 50,
     "type": "military",
     "name": "Far West Military Base"
+  },
+  {
+    "id": "115",
+    "x": 11,
+    "y": 53,
+    "type": "military",
+    "name": "Turtle Bay Base"
+  },
+  {
+    "id": "116",
+    "x": 58,
+    "y": 20,
+    "type": "military",
+    "name": "NE Military Array"
+  },
+  {
+    "id": "117",
+    "x": 45,
+    "y": 10,
+    "type": "military",
+    "name": "Far North Military"
+  },
+  {
+    "id": "118",
+    "x": 54,
+    "y": 87,
+    "type": "military",
+    "name": "Far South Military"
+  },
+  {
+    "id": "119",
+    "x": 18,
+    "y": 12,
+    "type": "military",
+    "name": "Orca Hospital Military Guard"
+  },
+  {
+    "id": "120",
+    "x": 86,
+    "y": 38,
+    "type": "military",
+    "name": "Cape Bay Checkpoint"
+  },
+  {
+    "id": "121",
+    "x": 48,
+    "y": 88,
+    "type": "military",
+    "name": "Pinecrest Perimeter"
+  },
+  {
+    "id": "122",
+    "x": 28,
+    "y": 42,
+    "type": "military",
+    "name": "Hayward Distributors Command"
+  },
+  {
+    "id": "123",
+    "x": 46,
+    "y": 23,
+    "type": "weapon",
+    "name": "Hayward Valley Weapon Cache"
+  },
+  {
+    "id": "124",
+    "x": 15,
+    "y": 58,
+    "type": "weapon",
+    "name": "Woodhaven Weapon Cache"
+  },
+  {
+    "id": "125",
+    "x": 28,
+    "y": 72,
+    "type": "weapon",
+    "name": "Sultan Weapon Cache"
+  },
+  {
+    "id": "126",
+    "x": 64,
+    "y": 75,
+    "type": "weapon",
+    "name": "Brightmoor Weapon Cache"
+  },
+  {
+    "id": "127",
+    "x": 22,
+    "y": 14,
+    "type": "weapon",
+    "name": "Hospital Weapon Cache"
+  },
+  {
+    "id": "128",
+    "x": 42,
+    "y": 46,
+    "type": "weapon",
+    "name": "Cedar Park Weapon Cache"
+  },
+  {
+    "id": "129",
+    "x": 72,
+    "y": 42,
+    "type": "weapon",
+    "name": "Orca Dam Weapon Cache"
+  },
+  {
+    "id": "130",
+    "x": 38,
+    "y": 56,
+    "type": "weapon",
+    "name": "Center Cave Weapon Cache"
+  },
+  {
+    "id": "131",
+    "x": 88,
+    "y": 38,
+    "type": "weapon",
+    "name": "Cape Bay Weapon Cache"
+  },
+  {
+    "id": "132",
+    "x": 52,
+    "y": 50,
+    "type": "weapon",
+    "name": "Crest Derby Weapon Cache"
+  },
+  {
+    "id": "133",
+    "x": 75,
+    "y": 85,
+    "type": "weapon",
+    "name": "Lumber Yard Weapon Cache"
+  },
+  {
+    "id": "134",
+    "x": 14,
+    "y": 22,
+    "type": "weapon",
+    "name": "North Watch Weapon Cache"
+  },
+  {
+    "id": "135",
+    "x": 28,
+    "y": 68,
+    "type": "cave",
+    "name": "West River Cave"
+  },
+  {
+    "id": "136",
+    "x": 29,
+    "y": 30,
+    "type": "cave",
+    "name": "West Hayward Cave"
+  },
+  {
+    "id": "137",
+    "x": 45,
+    "y": 22,
+    "type": "cave",
+    "name": "North Hayward Cave"
+  },
+  {
+    "id": "138",
+    "x": 67,
+    "y": 82,
+    "type": "cave",
+    "name": "Brightmoor Cave"
+  },
+  {
+    "id": "139",
+    "x": 35,
+    "y": 56,
+    "type": "cave",
+    "name": "Center Cave"
+  },
+  {
+    "id": "140",
+    "x": 42,
+    "y": 92,
+    "type": "cave",
+    "name": "South Coast Cave"
+  },
+  {
+    "id": "141",
+    "x": 7,
+    "y": 50,
+    "type": "cave",
+    "name": "Turtle Bay Coastal Cave"
+  },
+  {
+    "id": "142",
+    "x": 60,
+    "y": 25,
+    "type": "cave",
+    "name": "East Ridge Cave"
+  },
+  {
+    "id": "143",
+    "x": 55,
+    "y": 80,
+    "type": "cave",
+    "name": "Southeast Deep Cave"
+  },
+  {
+    "id": "144",
+    "x": 36,
+    "y": 58,
+    "type": "wreck",
+    "name": "Center Plane Wreck"
+  },
+  {
+    "id": "145",
+    "x": 54,
+    "y": 22,
+    "type": "wreck",
+    "name": "North Clyde Plane Wreck"
+  },
+  {
+    "id": "146",
+    "x": 82,
+    "y": 30,
+    "type": "wreck",
+    "name": "Brightmoor Plane Wreck"
+  },
+  {
+    "id": "147",
+    "x": 21,
+    "y": 43,
+    "type": "wreck",
+    "name": "West Coast Shipwreck"
+  },
+  {
+    "id": "148",
+    "x": 19,
+    "y": 74,
+    "type": "wreck",
+    "name": "Sultan Coast Shipwreck"
+  },
+  {
+    "id": "149",
+    "x": 44,
+    "y": 94,
+    "type": "wreck",
+    "name": "South Coast Shipwreck"
+  },
+  {
+    "id": "150",
+    "x": 58,
+    "y": 8,
+    "type": "wreck",
+    "name": "Far North Shipwreck"
+  },
+  {
+    "id": "151",
+    "x": 84,
+    "y": 20,
+    "type": "wreck",
+    "name": "NE Coast Shipwreck"
+  },
+  {
+    "id": "152",
+    "x": 28,
+    "y": 98,
+    "type": "wreck",
+    "name": "SW Coastal Plane Wreck"
+  },
+  {
+    "id": "153",
+    "x": 74,
+    "y": 52,
+    "type": "wreck",
+    "name": "Lake Plane Wreck"
+  },
+  {
+    "id": "154",
+    "x": 16,
+    "y": 18,
+    "type": "gas",
+    "name": "Far NW Gas Station"
+  },
+  {
+    "id": "155",
+    "x": 35,
+    "y": 45,
+    "type": "gas",
+    "name": "Cedar Park Gas Station"
+  },
+  {
+    "id": "156",
+    "x": 26,
+    "y": 75,
+    "type": "gas",
+    "name": "Haven Gas Station"
+  },
+  {
+    "id": "157",
+    "x": 46,
+    "y": 52,
+    "type": "gas",
+    "name": "Center Map Gas Station"
+  },
+  {
+    "id": "158",
+    "x": 15,
+    "y": 88,
+    "type": "gas",
+    "name": "Sultan Gas Station"
+  },
+  {
+    "id": "159",
+    "x": 78,
+    "y": 28,
+    "type": "gas",
+    "name": "NE Coast Gas Station"
+  },
+  {
+    "id": "160",
+    "x": 64,
+    "y": 72,
+    "type": "gas",
+    "name": "Brightmoor Gas"
+  },
+  {
+    "id": "161",
+    "x": 45,
+    "y": 24,
+    "type": "gas",
+    "name": "Hayward Valley Main Gas"
+  },
+  {
+    "id": "162",
+    "x": 22,
+    "y": 56,
+    "type": "gas",
+    "name": "Woodhaven Outlet Gas"
+  },
+  {
+    "id": "163",
+    "x": 36,
+    "y": 35,
+    "type": "tower",
+    "name": "Hayward Water Tower"
+  },
+  {
+    "id": "164",
+    "x": 48,
+    "y": 32,
+    "type": "tower",
+    "name": "North Center Water Tower"
+  },
+  {
+    "id": "165",
+    "x": 21,
+    "y": 75,
+    "type": "tower",
+    "name": "Sultan Water Tower"
+  },
+  {
+    "id": "166",
+    "x": 64,
+    "y": 78,
+    "type": "tower",
+    "name": "Brightmoor Water Tower"
+  },
+  {
+    "id": "167",
+    "x": 64,
+    "y": 66,
+    "type": "tower",
+    "name": "North Brightmoor Water Tower"
+  },
+  {
+    "id": "168",
+    "x": 58,
+    "y": 28,
+    "type": "tower",
+    "name": "North Orca Radio Tower"
+  },
+  {
+    "id": "169",
+    "x": 28,
+    "y": 64,
+    "type": "tower",
+    "name": "Center Radio Tower"
+  },
+  {
+    "id": "170",
+    "x": 17,
+    "y": 21,
+    "type": "tower",
+    "name": "NW Radio Tower"
+  },
+  {
+    "id": "171",
+    "x": 85,
+    "y": 45,
+    "type": "tower",
+    "name": "Cape Bay Radio Tower"
+  },
+  {
+    "id": "172",
+    "x": 8,
+    "y": 52,
+    "type": "tower",
+    "name": "Turtle Bay Radio Tower"
+  },
+  {
+    "id": "173",
+    "x": 18,
+    "y": 53,
+    "type": "tower",
+    "name": "Woodhaven Comm Tower"
+  },
+  {
+    "id": "174",
+    "x": 21,
+    "y": 13,
+    "type": "tower",
+    "name": "Orca Hospital Antenna"
+  },
+  {
+    "id": "175",
+    "x": 18,
+    "y": 88,
+    "type": "tower",
+    "name": "Airfield Tower"
+  },
+  {
+    "id": "176",
+    "x": 40,
+    "y": 45,
+    "type": "tower",
+    "name": "Cedar Park Radio Relay"
+  },
+  {
+    "id": "177",
+    "x": 45,
+    "y": 82,
+    "type": "tower",
+    "name": "Pinecrest Signal Tower"
+  },
+  {
+    "id": "178",
+    "x": 21,
+    "y": 32,
+    "type": "tunnel",
+    "name": "West Hayward Tunnel"
+  },
+  {
+    "id": "179",
+    "x": 22,
+    "y": 80,
+    "type": "tunnel",
+    "name": "Sultan Road Tunnel"
+  },
+  {
+    "id": "180",
+    "x": 32,
+    "y": 14,
+    "type": "tunnel",
+    "name": "North Hayward Tunnel"
+  },
+  {
+    "id": "181",
+    "x": 55,
+    "y": 30,
+    "type": "tunnel",
+    "name": "East Mountain Tunnel"
+  },
+  {
+    "id": "182",
+    "x": 40,
+    "y": 72,
+    "type": "tunnel",
+    "name": "South Pass Tunnel"
+  },
+  {
+    "id": "183",
+    "x": 46,
+    "y": 22,
+    "type": "location",
+    "name": "Hayward Valley"
+  },
+  {
+    "id": "184",
+    "x": 14,
+    "y": 58,
+    "type": "location",
+    "name": "Woodhaven"
+  },
+  {
+    "id": "185",
+    "x": 41,
+    "y": 84,
+    "type": "location",
+    "name": "Pinecrest"
+  },
+  {
+    "id": "186",
+    "x": 88,
+    "y": 40,
+    "type": "location",
+    "name": "Cape Bay"
+  },
+  {
+    "id": "187",
+    "x": 64,
+    "y": 74,
+    "type": "location",
+    "name": "Brightmoor"
+  },
+  {
+    "id": "188",
+    "x": 28,
+    "y": 71,
+    "type": "location",
+    "name": "Sultan"
+  },
+  {
+    "id": "189",
+    "x": 12,
+    "y": 53,
+    "type": "location",
+    "name": "Turtle Bay"
+  },
+  {
+    "id": "190",
+    "x": 10,
+    "y": 72,
+    "type": "location",
+    "name": "Horseshoe Beach"
+  },
+  {
+    "id": "191",
+    "x": 43,
+    "y": 45,
+    "type": "location",
+    "name": "Cedar Park"
+  },
+  {
+    "id": "192",
+    "x": 58,
+    "y": 42,
+    "type": "location",
+    "name": "Clyde Hill"
+  },
+  {
+    "id": "193",
+    "x": 20,
+    "y": 84,
+    "type": "location",
+    "name": "Amalgamated Airfield"
+  },
+  {
+    "id": "194",
+    "x": 75,
+    "y": 88,
+    "type": "location",
+    "name": "Lumber Yard"
+  },
+  {
+    "id": "195",
+    "x": 70,
+    "y": 42,
+    "type": "location",
+    "name": "Orca Dam"
+  },
+  {
+    "id": "196",
+    "x": 18,
+    "y": 12,
+    "type": "location",
+    "name": "Orca Hospital"
+  },
+  {
+    "id": "197",
+    "x": 27,
+    "y": 30,
+    "type": "location",
+    "name": "West Hayward Trailer Park"
+  },
+  {
+    "id": "198",
+    "x": 30,
+    "y": 45,
+    "type": "location",
+    "name": "River Trailer Park"
+  },
+  {
+    "id": "199",
+    "x": 58,
+    "y": 70,
+    "type": "location",
+    "name": "Brightmoor Trailer Park"
+  },
+  {
+    "id": "200",
+    "x": 66,
+    "y": 70,
+    "type": "location",
+    "name": "Brightmoor Shore"
+  },
+  {
+    "id": "201",
+    "x": 50,
+    "y": 88,
+    "type": "location",
+    "name": "Forest Valley Road"
+  },
+  {
+    "id": "202",
+    "x": 18,
+    "y": 22,
+    "type": "location",
+    "name": "NW River Cabins"
+  },
+  {
+    "id": "203",
+    "x": 35,
+    "y": 12,
+    "type": "location",
+    "name": "North Watch"
+  },
+  {
+    "id": "204",
+    "x": 28,
+    "y": 40,
+    "type": "location",
+    "name": "Hayward Distributors"
   }
 ]
