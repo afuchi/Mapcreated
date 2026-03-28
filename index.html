@@ -783,21 +783,16 @@
           if (!isAnyMarkerDragging) draw();
         })
         .catch(err => {
-          console.log('API not available, falling back to static files', err);
-          // Fallback: load both datasets directly for static hosting (e.g. GitHub Pages)
-          Promise.all([
-            fetch('dataset.json').then(r => r.ok ? r.json() : []),
-            fetch('shared_pins.json').then(r => r.ok ? r.json() : [])
-          ]).then(([globalData, localData]) => {
-            const globalPins = globalData.map(m => ({ ...m, source: 'global' }));
-            
-            // Extract from { markers: [] } wrapper if hosted statically
-            const localArray = Array.isArray(localData) ? localData : (localData.markers || []);
-            const localPins = localArray.map(m => ({ ...m, source: 'local' }));
-            
-            localMarkers = [...globalPins, ...localPins];
-            if (!isAnyMarkerDragging) draw();
-          }).catch(err2 => console.error('Failed to load static datasets', err2));
+          console.log('API not available, falling back to shared_pins.json', err);
+          // Fallback for static hosting (GitHub Pages): only load shared_pins.json
+          fetch('shared_pins.json')
+            .then(r => r.ok ? r.json() : {})
+            .then(localData => {
+              const localArray = Array.isArray(localData) ? localData : (localData.markers || []);
+              localMarkers = localArray.map(m => ({ ...m, source: 'local' }));
+              if (!isAnyMarkerDragging) draw();
+            })
+            .catch(err2 => console.error('Failed to load shared_pins.json', err2));
         });
     }
 
