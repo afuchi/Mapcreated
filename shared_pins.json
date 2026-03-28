@@ -109,15 +109,6 @@
       "source": "local"
     },
     {
-      "id": "1774690976459111",
-      "x": 41.41797970426549,
-      "y": 24.641082766141825,
-      "type": "boat",
-      "name": "Hayward Boat Spawn",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "101",
       "x": 47.38213503299613,
       "y": 39.54789060369974,
@@ -2841,6 +2832,33 @@
       "y": 62.77554602266006,
       "type": "car",
       "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774690976459111",
+      "x": 41.558235781623125,
+      "y": 24.556206098955368,
+      "type": "boat",
+      "name": "Hayward Boat Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "105",
+      "x": 37.534815915542744,
+      "y": 10.711320564016063,
+      "type": "boat",
+      "name": "North Shore Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "147",
+      "x": 20.471271715211824,
+      "y": 42.97300167829915,
+      "type": "wreck",
+      "name": "West Coast Shipwreck",
       "image": null,
       "source": "local"
     }

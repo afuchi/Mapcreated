@@ -1,34 +1,69 @@
-# Miscreated Intel Map
+# Miscreated Intel Map — v3.3
 
-A fully interactive, dynamic web map for the game **Miscreated**. 
+An interactive, browser-based intelligence map for the survival game **Miscreated**.
+
+---
 
 ## Features
-- **Extensive Marker Dataset**: Includes dynamic mapping for Cars, Military outposts, Bunkers, Tents, Caves, Stashes, Bases, Wrecks, Gas Stations, Radio Towers, Tunnels, and more!
-- **Interactive Drag & Drop**: Easily place and move custom markers on the map visually, automatically locking the map pan while you configure spots.
-- **Shared Live Data**: Any custom pins placed on the map are synced with a local backend database for connected users, grouped into the "Global Data" sidebar list. You can visually arrange them, delete them, or purge them!
-- **Lore Integration**: Locked location markers (📍) automatically fetch layout pictures and lore summaries directly from the official Miscreated Wiki when clicked on!
-- **Dynamic View Optimization**: Deep-zoom marker scaling automatically shrinks pin icons when you zoom in so you never lose sight of your surroundings underneath huge markers. 
-- **Filtering System**: Toggle individual asset categories independently from the sidebar to easily find exactly what you're looking for.
 
-## Local Setup
-You will need exactly two things to run this map backend locally:
-1. Windows Powershell
-2. Python 3.8+
+### 🗺️ Interactive Map
+- Smooth pan and zoom with mouse wheel
+- Map is clamped to boundaries — can't pan off the edge
+- Clicking the map focuses on the selected location with a smooth animated zoom
 
-Run the included `setup_env.ps1` script to install the FastAPI dependencies within a protected virtual environment:
-```powershell
-./setup_env.ps1
-```
+### 📍 Marker System
+- Place custom markers anywhere on the map via the **v3.3** panel
+- Choose from 14 marker types: 🚗 Car, 🏰 Military, 🧱 Bunker, ⛺ Tent, 🕳️ Cave, 📦 Stash, 🛩️ Wreck, ⛽ Gas, 🗼 Tower, 🚇 Tunnel, 📍 Location, 🏠 Base, ⛵ Boat, 🔫 Weapon
+- Custom marker name and optional image attachment
+- Drag and drop any marker to reposition it on the map
 
-## Running the Server
-The simplest way to start the local map server is by executing `server.py` using your new virtual environment:
-```powershell
-./venv/Scripts/python server.py
-```
-The application will start an HTTP Python FastAPI server on your machine.
-Simply open your web browser and navigate to `http://localhost:8000/` to test out the Map!
+### 📋 Sidebar — Collapsible Groups
+- All pins are organized into **collapsible type groups** (e.g. Bunkers, Boats, Gas Stations)
+- Each group shows a live **count badge**
+- Click a group header to expand or collapse it
+- Delete individual custom (Shared Live) markers directly from the list
+
+### 🔍 Filters
+- Toggle individual pin types on/off with checkboxes in a **2-column grid**
+- **Show All** — checks all filters at once
+- **Clear Filters** — unchecks all filters at once
+
+### 📐 Smart Pin Scaling
+- Pins automatically scale down as you zoom in, so they never obscure the map beneath them
+
+### 🌐 Wiki Integration
+- Clicking a 📍 Location pin fetches a live summary and image from the [Miscreated Wiki](https://miscreated.fandom.com) and displays it in an info card
+
+### 🔄 Shared Live Data (requires Python server)
+- Markers placed are synced to a local backend (`shared_pins.json`) in real time
+- Polling every 3 seconds keeps all connected users in sync
+- **Purge Shared Data** button wipes all custom markers for everyone
+
+---
+
+## Running Locally
+
+Requires **Python 3.8+**.
+
+1. Run the setup script to install dependencies:
+   ```powershell
+   ./setup_env.ps1
+   ```
+
+2. Start the server:
+   ```powershell
+   ./venv/Scripts/python server.py
+   ```
+
+3. Open your browser and go to `http://localhost:8000`
+
+---
 
 ## Static Hosting (GitHub Pages)
-Because the map is designed to fall back to natively reading from `dataset.json` when the Python API isn't around, this map can flawlessly host itself entirely free inside static delivery services like **GitHub Pages** without any backend server required! 
 
-*(Note that the "Shared Live" updating and marker drag/drop saving features require the active Python API to be running)*.
+The map works without a Python backend on static hosts like **GitHub Pages**.
+
+- On GitHub Pages, only `shared_pins.json` is loaded — this is the single source of truth for all pins displayed
+- To update pins on GitHub Pages, run the server locally, position your pins, then push `shared_pins.json` to GitHub
+
+> **Note:** Live sharing and drag-save features require the Python server to be running.
