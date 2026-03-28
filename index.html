@@ -244,27 +244,13 @@
     }
 
     /* Filters & Lists */
-    .filter {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      user-select: none;
-      transition: color 0.2s;
-    }
+    .filter { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; user-select: none; transition: color 0.2s; padding: 5px 8px; border-radius: 6px; }
+  .filter:hover { color: #fff; background: rgba(255,255,255,0.05); }
+  .filter input { width: auto; margin: 0; cursor: pointer; accent-color: var(--accent); }
 
-    .filter:hover {
-      color: #fff;
-    }
-
-    .filter input {
-      width: auto;
-      margin: 0;
-      cursor: pointer;
-      accent-color: var(--accent);
-    }
+  .filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .filter-actions { display: flex; gap: 6px; margin-bottom: 8px; }
+  .filter-actions button { font-size: 11px; padding: 5px 8px; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0; }
 
     ul {
       list-style: none;
@@ -690,16 +676,20 @@
     </div>
 
     <div class="sidebar-section">
-      <h4 style="margin-bottom: 4px;">Filters</h4>
-      <div class="panel-box">
+      <h4 style="margin-bottom: 8px;">Filters</h4>
+      <div class="filter-actions">
+        <button class="outline" onclick="setAllFilters(true)">Show All</button>
+        <button class="outline" onclick="setAllFilters(false)">Hide All</button>
+      </div>
+      <div class="filter-grid">
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('car')"> 🚗 Cars</label>
-        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('military')"> 🔫 Military</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('military')"> 🏰 Military</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('bunker')"> 🧱 Bunkers</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tent')"> ⛺ Tents</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('cave')"> 🕳️ Caves</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('stash')"> 📦 Stashes</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('wreck')"> 🛩️ Wrecks</label>
-        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('gas')"> ⛽ Gas Stations</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('gas')"> ⛽ Gas</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tower')"> 🗼 Towers</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tunnel')"> 🚇 Tunnels</label>
         <label class="filter"><input type="checkbox" checked onchange="toggleFilter('location')"> 📍 Locations</label>
@@ -861,6 +851,12 @@
     }
 
     function toggleFilter(type) { filters[type] = !filters[type]; draw(); }
+
+    function setAllFilters(val) {
+      Object.keys(filters).forEach(k => filters[k] = val);
+      document.querySelectorAll('.filter input[type="checkbox"]').forEach(cb => cb.checked = val);
+      draw();
+    }
 
     function clearSharedStore() {
       if (confirm("Are you sure you want to purge ALL shared data? This clears it for everyone!")) {

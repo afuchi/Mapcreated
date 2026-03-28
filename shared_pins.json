@@ -28,15 +28,6 @@
       "source": "local"
     },
     {
-      "id": "106",
-      "x": 92.1117750449801,
-      "y": 46.27329831337722,
-      "type": "boat",
-      "name": "Cape Bay Shore Boat",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "104",
       "x": 82.61287021283135,
       "y": 52.305959584261906,
@@ -2818,11 +2809,38 @@
       "source": "local"
     },
     {
+      "id": "146",
+      "x": 81.95450885668278,
+      "y": 30.15287182507122,
+      "type": "wreck",
+      "name": "Brightmoor Plane Wreck",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "106",
+      "x": 92.10577340320354,
+      "y": 46.348209334390745,
+      "type": "boat",
+      "name": "Cape Bay Shore Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
       "id": "1774705778201965",
-      "x": 20.982760889938298,
-      "y": 70.65588048853223,
+      "x": 21.686125744001668,
+      "y": 70.24806483844935,
       "type": "home",
       "name": "Home",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774727109801125",
+      "x": 14.588082387951932,
+      "y": 62.77554602266006,
+      "type": "car",
+      "name": "Vehicle Spawn",
       "image": null,
       "source": "local"
     }
