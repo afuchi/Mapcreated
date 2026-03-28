@@ -790,7 +790,11 @@
             fetch('shared_pins.json').then(r => r.ok ? r.json() : [])
           ]).then(([globalData, localData]) => {
             const globalPins = globalData.map(m => ({ ...m, source: 'global' }));
-            const localPins = localData.map(m => ({ ...m, source: 'local' }));
+            
+            // Extract from { markers: [] } wrapper if hosted statically
+            const localArray = Array.isArray(localData) ? localData : (localData.markers || []);
+            const localPins = localArray.map(m => ({ ...m, source: 'local' }));
+            
             localMarkers = [...globalPins, ...localPins];
             if (!isAnyMarkerDragging) draw();
           }).catch(err2 => console.error('Failed to load static datasets', err2));
