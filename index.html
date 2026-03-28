@@ -312,7 +312,7 @@
     /* Map Markers and Labels */
     .marker-wrapper {
       position: absolute;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(var(--pin-scale, 1));
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -325,11 +325,11 @@
       cursor: grabbing;
       z-index: 1000;
       transition: none;
-      transform: translate(-50%, -50%) scale(1.1);
+      transform: translate(-50%, -50%) scale(calc(var(--pin-scale, 1) * 1.1));
     }
 
     .marker-wrapper:hover {
-      transform: translate(-50%, -50%) scale(1.1);
+      transform: translate(-50%, -50%) scale(calc(var(--pin-scale, 1) * 1.1));
       z-index: 10;
     }
 
@@ -739,6 +739,13 @@
 
       mapContainer.addEventListener('panzoomend', () => {
         clampPan(true);
+      });
+
+      mapContainer.addEventListener('panzoomzoom', (e) => {
+        const scale = e.detail.scale;
+        // Keep markers native size when zooming in, but let them shrink natively when zooming out
+        const invScale = scale > 1 ? (1 / scale) : 1;
+        document.documentElement.style.setProperty('--pin-scale', invScale);
       });
 
       // Initial fetch of the complete consolidated marker set
