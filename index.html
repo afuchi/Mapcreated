@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miscreated Intel Map</title>
+  <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+    :root {
+      --bg-dark: #0f172a;
+      --panel-bg: rgba(15, 20, 30, 0.65);
+      --panel-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --accent: #d4af37;
+      --accent-hover: #f1c40f;
+      --danger: #ef4444;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #020617;
+      color: var(--text-main);
+      display: block;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Map and Layout */
+    #mapWrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      cursor: crosshair;
+      z-index: 1;
+    }
+
+    #mapWrap:active {
+      cursor: crosshair;
+    }
+
+    #mapContainer {
+      position: relative;
+      width: 100%;
+      max-width: none;
+      transform-origin: 50% 50%;
+    }
+
+    img#mapImage {
+      width: 100%;
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: absolute;
+      left: 24px;
+      top: 80px;
+      bottom: 24px;
+      width: 320px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 24px;
+      overflow-y: auto;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    }
+
+    #sidebar.collapsed {
+      transform: translateX(-120%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Main Toggle Button */
+    #sidebarToggle {
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      z-index: 20;
+      width: 44px;
+      height: 44px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    #sidebarToggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+      color: var(--accent-hover);
+    }
+
+    .sidebar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      color: var(--accent);
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Form Elements */
+    button,
+    select,
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      margin: 0;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    select:focus,
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+    }
+
+    button {
+      cursor: pointer;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.05em;
+    }
+
+    button:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button.danger {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      box-shadow: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    button.danger:hover {
+      background: var(--danger);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+    }
+
+    button.outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+    }
+
+    button.outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* Filters & Lists */
+    .filter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .filter:hover {
+      color: #fff;
+    }
+
+    .filter input {
+      width: auto;
+      margin: 0;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    li {
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    li:hover {
+      border-color: var(--accent);
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: translateX(4px);
+    }
+
+    .delete-btn {
+      width: auto;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-left: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .pin-name {
+      flex: 1;
+      pointer-events: none;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Map Markers and Labels */
+    .marker-wrapper {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      pointer-events: auto;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .marker-wrapper.dragging {
+      cursor: grabbing;
+      z-index: 1000;
+      transition: none;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .marker-wrapper:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      z-index: 10;
+    }
+
+    /* Movable state visual feedback */
+    .marker-wrapper.unlocked .marker {
+      filter: drop-shadow(0 0 8px var(--accent)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+      animation: pulsate 2s infinite ease-in-out;
+    }
+
+    @keyframes pulsate {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .marker {
+      font-size: 24px;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+      user-select: none;
+    }
+
+    .label-container {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: rgba(10, 15, 20, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--accent);
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      margin-top: -35px;
+      /* Move label above marker */
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      text-transform: uppercase;
+      user-select: none;
+      position: relative;
+    }
+
+    .marker-del-x {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: rgba(239, 68, 68, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 50%;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: bold;
+      padding: 0;
+      line-height: 1;
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+      position: absolute;
+      top: -8px;
+    }
+
+    .marker-del-x {
+      right: -8px;
+    }
+
+    .label-container:hover .marker-del-x {
+      display: flex;
+    }
+
+    .marker-del-x:hover {
+      background: #ff4d4d;
+      transform: scale(1.2) rotate(90deg);
+    }
+
+    .marker-wrapper.dragging {
+      cursor: grabbing;
+      z-index: 1000;
+      transition: none;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 8px;
+      font-size: 11px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      border-radius: 6px;
+      box-shadow: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tabs button.active {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+    }
+
+    .tabs button:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Modals and Info Cards */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .modal {
+      background: var(--panel-bg);
+      padding: 32px;
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      width: 340px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    #infoCard {
+      display: none;
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      background: var(--panel-bg);
+      padding: 32px;
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+      z-index: 90;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .card-close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: auto;
+      background: transparent !important;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 4px;
+      border: none !important;
+      margin: 0;
+      box-shadow: none !important;
+    }
+
+    .card-close:hover {
+      color: #fff;
+      transform: scale(1.1);
+      background: transparent !important;
+    }
+
+    #infoName {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #infoType {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+      font-family: 'Inter', sans-serif;
+    }
+
+    #infoWikiText {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .panel-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- New Pin Modal -->
+  <div id="pinModalBg" class="modal-bg">
+    <div class="modal">
+      <h3 style="color: var(--accent); font-size: 18px;">Drop New Marker</h3>
+      <input type="text" id="pinNameInput" placeholder="Marker Name...">
+
+      <label style="font-size: 12px; color: var(--text-muted); font-weight: 500;">Attach Visual Data (Optional)</label>
+      <input type="file" id="pinImageInput" accept="image/*">
+
+      <div style="display: flex; gap: 10px; margin-top: 8px;">
+        <button onclick="saveNewPin()" style="flex: 1;">Save Pin</button>
+        <button onclick="closePinModal()" class="danger" style="flex: 1;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Card -->
+  <div id="infoCard">
+    <button onclick="document.getElementById('infoCard').style.display='none'" class="card-close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div id="infoName"></div>
+    <div id="infoType"></div>
+    <img id="infoImage" src=""
+      style="width: 100%; border-radius: 6px; display: none; margin-bottom: 12px; object-fit: cover;">
+    <div id="infoCoords" style="font-size: 12px; color: var(--text-muted); font-family: monospace;"></div>
+    <div id="infoWikiText"></div>
+  </div>
+
+  <button id="sidebarToggle" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <div id="sidebar">
+    <div class="sidebar-section">
+      <h3 style="color: var(--accent); font-size: 16px;">Data Uplink</h3>
+      <div class="panel-box">
+        <select id="typeSelect">
+          <option value="car">🚗 Car</option>
+          <option value="military">🔫 Military</option>
+          <option value="bunker">🧱 Bunker</option>
+          <option value="tent">⛺ Tent</option>
+          <option value="cave">🕳️ Cave</option>
+          <option value="stash">📦 Stash</option>
+          <option value="wreck">🛩️ Wreck</option>
+          <option value="gas">⛽ Gas Station</option>
+          <option value="tower">🗼 Tower</option>
+          <option value="tunnel">🚇 Tunnel</option>
+          <option value="location">📍 Location</option>
+          <option value="home">🏠 Base</option>
+          <option value="boat">⛵ Boat</option>
+          <option value="weapon">🔫 Weapon</option>
+        </select>
+        <button onclick="setMode('marker')" id="placeBtn">Place Marker</button>
+        <button onclick="clearSharedStore()" class="outline danger" style="margin-top: 4px;">Purge Shared Data</button>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h4 style="margin-bottom: 4px;">Filters</h4>
+      <div class="panel-box">
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('car')"> 🚗 Cars</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('military')"> 🔫 Military</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('bunker')"> 🧱 Bunkers</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tent')"> ⛺ Tents</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('cave')"> 🕳️ Caves</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('stash')"> 📦 Stashes</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('wreck')"> 🛩️ Wrecks</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('gas')"> ⛽ Gas Stations</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tower')"> 🗼 Towers</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('tunnel')"> 🚇 Tunnels</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('location')"> 📍 Locations</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('home')"> 🏠 Bases</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('boat')"> ⛵ Boats</label>
+        <label class="filter"><input type="checkbox" checked onchange="toggleFilter('weapon')"> 🔫 Weapons</label>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="tabs">
+        <button id="tabLocations" onclick="switchTab('locations')">Locations</button>
+        <button id="tabGlobal" onclick="switchTab('global')" class="active">Global Data</button>
+        <button id="tabLocal" onclick="switchTab('local')">Shared Live</button>
+      </div>
+      <div id="locationsPinView" style="display: none;">
+        <ul id="locationsPinList"></ul>
+      </div>
+      <div id="globalPinView">
+        <ul id="globalPinList"></ul>
+      </div>
+      <div id="localPinView" style="display: none;">
+        <ul id="localPinList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="mapWrap">
+    <div id="mapContainer">
+      <img src="map.jpg" alt="Miscreated Map" id="mapImage">
+      <div id="overlay"></div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const globalPinList = document.getElementById('globalPinList');
+    const localPinList = document.getElementById('localPinList');
+    const locationsPinList = document.getElementById('locationsPinList');
+    const mapContainer = document.getElementById('mapContainer');
+    const mapWrap = document.getElementById('mapWrap');
+    const placeBtn = document.getElementById('placeBtn');
+    const pinModalBg = document.getElementById('pinModalBg');
+    const infoCard = document.getElementById('infoCard');
+
+    let mode = null;
+    let pz = null;
+    let pendingPin = null;
+    let localMarkers = [];
+    let draggedMarker = null;
+    let isAnyMarkerDragging = false;
+
+    let filters = { car: true, military: true, bunker: true, tent: true, cave: true, stash: true, home: true, wreck: true, gas: true, tower: true, tunnel: true, location: true, boat: true, weapon: true };
+    const icons = { car: '🚗', military: '🏰', bunker: '🧱', tent: '⛺', cave: '🕳️', stash: '📦', home: '🏠', wreck: '🛩️', gas: '⛽', tower: '🗼', tunnel: '🚇', location: '📍', boat: '⛵', weapon: '🔫' };
+    const defaultNames = { car: 'Vehicle Spawn', military: 'Military Outpost', bunker: 'Bunker', tent: 'Tents', cave: 'Cave', stash: 'Hidden Stash', home: 'My Base', wreck: 'Wreck', gas: 'Gas Station', tower: 'Tower', tunnel: 'Tunnel', location: 'Point of Interest', boat: 'Boat Spawn', weapon: 'Weapon Cache' };
+
+    function clampPan(animate) {
+      if (!pz) return;
+      const scale = pz.getScale();
+      const pan = pz.getPan();
+      let x = pan.x;
+      let y = pan.y;
+
+      const cw = mapContainer.offsetWidth;
+      const ch = mapContainer.offsetHeight;
+      const ww = mapWrap.offsetWidth;
+      const wh = mapWrap.offsetHeight;
+
+      let boundX = Math.max(0, (cw * scale - ww) / 2 / scale);
+      let boundY = Math.max(0, (ch * scale - wh) / 2 / scale);
+
+      let clamped = false;
+      if (x > boundX) { x = boundX; clamped = true; }
+      if (x < -boundX) { x = -boundX; clamped = true; }
+      if (y > boundY) { y = boundY; clamped = true; }
+      if (y < -boundY) { y = -boundY; clamped = true; }
+
+      if (clamped) {
+        pz.pan(x, y, { animate: animate });
+      }
+    }
+
+    function init() {
+      pz = Panzoom(mapContainer, {
+        maxScale: 15,
+        minScale: 0.1
+      });
+
+      setTimeout(() => {
+        pz.zoom(1);
+        pz.pan(0, 0);
+      }, 100);
+
+      mapWrap.addEventListener('wheel', (e) => {
+        pz.zoomWithWheel(e);
+        clampPan(false);
+      });
+
+      mapContainer.addEventListener('panzoomend', () => {
+        clampPan(true);
+      });
+
+      // Initial fetch of the complete consolidated marker set
+      fetchSharedMarkers();
+
+      // Start polling shared markers
+      setInterval(() => {
+        if (!isAnyMarkerDragging) fetchSharedMarkers();
+      }, 3000);
+    }
+
+    function updatePanLock() {
+      if (!pz) return;
+      const isEditing = mode === 'marker';
+
+      const shouldDisablePan = isEditing || isAnyMarkerDragging;
+
+      pz.setOptions({
+        disablePan: shouldDisablePan,
+      });
+
+      // Update body cursor to show we are in a special mode
+      document.body.style.cursor = shouldDisablePan ? 'crosshair' : 'default';
+      overlay.style.cursor = 'default';
+    }
+
+    function fetchSharedMarkers() {
+      fetch('/api/pins')
+        .then(r => {
+          if (!r.ok) throw new Error('API not available');
+          return r.json();
+        })
+        .then(data => {
+          localMarkers = data;
+          if (!isAnyMarkerDragging) draw();
+        })
+        .catch(err => {
+          console.log('API not available, falling back to dataset.json', err);
+          // Fallback: load dataset.json directly for static hosting (e.g. GitHub Pages)
+          fetch('dataset.json')
+            .then(r => r.json())
+            .then(data => {
+              localMarkers = data.map(m => ({ ...m, source: 'global' }));
+              if (!isAnyMarkerDragging) draw();
+            })
+            .catch(err2 => console.error('Failed to load dataset.json fallback', err2));
+        });
+    }
+
+    function setMode(newMode) {
+      if (mode === newMode) {
+        mode = null;
+        placeBtn.innerText = 'Place Marker';
+        placeBtn.style.background = '';
+        placeBtn.style.color = '';
+        mapWrap.style.cursor = 'crosshair';
+        if (pz) pz.setOptions({ disablePan: false });
+      } else {
+        mode = newMode;
+        placeBtn.innerText = 'Select Map Location...';
+        placeBtn.style.background = 'var(--accent-hover)';
+        placeBtn.style.color = '#fff';
+        mapWrap.style.cursor = 'crosshair';
+        updatePanLock();
+      }
+    }
+
+    function toggleFilter(type) { filters[type] = !filters[type]; draw(); }
+
+    function clearSharedStore() {
+      if (confirm("Are you sure you want to purge ALL shared data? This clears it for everyone!")) {
+        fetch('/api/pins/purge', { method: 'POST' })
+          .then(() => fetchSharedMarkers());
+      }
+    }
+
+    function deleteLocalMarker(e, id) {
+      e.stopPropagation();
+      fetch(`/api/pins/${id}`, { method: 'DELETE' })
+        .then(() => {
+          infoCard.style.display = 'none';
+          fetchSharedMarkers();
+        });
+    }
+
+    function focusOnMarker(m) {
+      const scale = 4;
+      const cw = mapContainer.offsetWidth;
+      const ch = mapContainer.offsetHeight;
+
+      const adjustedX = 2.0 + (m.x / 100) * 96.0;
+      const adjustedY = 1.54 + (m.y / 100) * 96.92;
+
+      const targetX = (adjustedX / 100) * cw;
+      const targetY = (adjustedY / 100) * ch;
+
+      const panX = cw / 2 - targetX;
+      const panY = ch / 2 - targetY;
+
+      mapContainer.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      pz.zoom(scale, { animate: false });
+      pz.pan(panX, panY, { animate: false });
+
+      setTimeout(() => { mapContainer.style.transition = ''; }, 450);
+
+      document.getElementById('infoName').innerText = `${icons[m.type]} ${m.name}`;
+      document.getElementById('infoType').innerText = m.source === 'local' ? 'Shared Live Marker' : 'Global Dataset';
+      document.getElementById('infoCoords').innerText = `LAT: ${m.y.toFixed(2)} | LNG: ${m.x.toFixed(2)}`;
+
+      const imgEl = document.getElementById('infoImage');
+      const wikiTextEl = document.getElementById('infoWikiText');
+      wikiTextEl.style.display = 'none';
+      wikiTextEl.innerHTML = '';
+
+      if (m.image) {
+        imgEl.src = m.image;
+        imgEl.style.display = 'block';
+      } else {
+        imgEl.style.display = 'none';
+      }
+
+      infoCard.style.display = 'block';
+
+      const wikiKeywords = ['Woodhaven', 'Brightmoor', 'Hayward Valley', 'Pinecrest', 'Sultan', 'Cape Bay', 'Horseshoe Beach', 'Turtle Bay', 'Orca Dam', 'Clyde Hill', 'Lumber Yard', 'Airfield'];
+      let wikiQuery = null;
+      for (let kw of wikiKeywords) {
+        if (m.name.includes(kw)) { wikiQuery = kw; break; }
+      }
+
+      if (wikiQuery) {
+        wikiTextEl.innerText = "Loading lore...";
+        wikiTextEl.style.display = 'block';
+        fetch(`/api/wiki/${encodeURIComponent(wikiQuery)}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.summary) {
+              wikiTextEl.innerText = data.summary;
+              if (!m.image && data.image) {
+                imgEl.src = data.image;
+                imgEl.style.display = 'block';
+              }
+            } else {
+              wikiTextEl.style.display = 'none';
+            }
+          })
+          .catch(err => {
+            wikiTextEl.style.display = 'none';
+          });
+      }
+    }
+
+    function onMouseMoveGlobal(e) {
+      if (!draggedMarker) return;
+      isAnyMarkerDragging = true;
+      draggedMarker.wrapper.dataset.dragged = "true";
+
+      const rect = overlay.getBoundingClientRect();
+      const pX = ((e.clientX - rect.left) / rect.width) * 100;
+      const pY = ((e.clientY - rect.top) / rect.height) * 100;
+
+      draggedMarker.wrapper.style.left = pX + '%';
+      draggedMarker.wrapper.style.top = pY + '%';
+    }
+
+    function onMouseUpGlobal(e) {
+      if (!draggedMarker) return;
+
+      const m = draggedMarker.marker;
+      const wrapper = draggedMarker.wrapper;
+
+      wrapper.classList.remove('dragging');
+      updatePanLock();
+
+      const rect = overlay.getBoundingClientRect();
+      const pX = ((e.clientX - rect.left) / rect.width) * 100;
+      const pY = ((e.clientY - rect.top) / rect.height) * 100;
+
+      const gridX = ((pX - 2.0) / 96.0) * 100;
+      const gridY = ((pY - 1.54) / 96.92) * 100;
+
+      console.log(`Drop successful. New grid coords: x=${gridX.toFixed(2)}, y=${gridY.toFixed(2)}`);
+
+      // Update m in place to avoid flickering before the re-fetch
+      m.x = gridX;
+      m.y = gridY;
+
+      // Save movement - Reuse saveNewPin logic (simplified call)
+      saveNewPin({
+        id: m.id,
+        x: gridX,
+        y: gridY,
+        type: m.type,
+        name: m.name,
+        image: m.image || null
+      });
+
+      draggedMarker = null;
+      isAnyMarkerDragging = false;
+
+      window.removeEventListener('mousemove', onMouseMoveGlobal);
+      window.removeEventListener('mouseup', onMouseUpGlobal);
+    }
+
+    function draw() {
+      overlay.innerHTML = ''; globalPinList.innerHTML = ''; localPinList.innerHTML = ''; locationsPinList.innerHTML = '';
+
+      // localMarkers now contains the complete consolidated set from /api/pins
+      const allMarkers = localMarkers;
+
+      allMarkers.forEach((m) => {
+        if (!filters[m.type]) return;
+
+        const adjustedX = 2.0 + (m.x / 100) * 96.0;
+        const adjustedY = 1.54 + (m.y / 100) * 96.92;
+
+        const wrapper = document.createElement('div');
+
+        wrapper.className = 'marker-wrapper panzoom-exclude';
+        wrapper.style.left = adjustedX + '%';
+        wrapper.style.top = adjustedY + '%';
+
+        const label = document.createElement('div');
+        label.className = 'label-container';
+        label.innerText = m.name;
+
+        const isLocked = m.type === 'location' || m.source === 'local';
+        const canDelete = m.source === 'local';
+
+        if (canDelete) {
+          const delX = document.createElement('div');
+          delX.className = 'marker-del-x';
+          delX.innerText = '×';
+          delX.title = 'Delete Marker';
+          delX.onclick = (e) => {
+            e.stopPropagation();
+            deleteLocalMarker(e, m.id);
+          };
+          label.appendChild(delX);
+        }
+
+        const icon = document.createElement('div');
+        icon.className = 'marker';
+        icon.innerText = icons[m.type];
+
+        wrapper.appendChild(label);
+        wrapper.appendChild(icon);
+        overlay.appendChild(wrapper);
+
+        wrapper.onclick = (e) => {
+          if (wrapper.dataset.dragged === "true") {
+            wrapper.dataset.dragged = "false";
+            return;
+          }
+          e.stopPropagation();
+          focusOnMarker(m);
+        };
+
+        // Add dragging logic
+        if (!isLocked) {
+          wrapper.addEventListener('mousedown', (e) => {
+            if (e.target.className === 'marker-del-x') return;
+
+            draggedMarker = { marker: m, wrapper: wrapper };
+
+
+            wrapper.classList.add('dragging');
+            updatePanLock();
+            console.log(`Dragging marker: ${m.name} (id: ${m.id})`);
+
+            window.addEventListener('mousemove', onMouseMoveGlobal);
+            window.addEventListener('mouseup', onMouseUpGlobal);
+
+            e.preventDefault();
+            e.stopPropagation();
+          });
+        }
+
+        // List addition
+        const li = document.createElement('li');
+        li.onclick = () => focusOnMarker(m);
+
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'pin-name';
+        titleSpan.innerText = `${icons[m.type]} ${m.name}`;
+        li.appendChild(titleSpan);
+
+        if (m.source === 'local' || m.source === 'global') {
+          if (canDelete) {
+            const delBtn = document.createElement('button');
+            delBtn.className = 'delete-btn danger outline';
+            delBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+            delBtn.onclick = (e) => {
+              deleteLocalMarker(e, m.id);
+            };
+            li.appendChild(delBtn);
+          }
+
+          if (m.type === 'location') locationsPinList.appendChild(li);
+          else globalPinList.appendChild(li);
+        }
+      });
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (mode === 'marker') {
+        const rect = overlay.getBoundingClientRect();
+        const pX = ((e.clientX - rect.left) / rect.width) * 100;
+        const pY = ((e.clientY - rect.top) / rect.height) * 100;
+
+        const gridX = ((pX - 2.0) / 96.0) * 100;
+        const gridY = ((pY - 1.54) / 96.92) * 100;
+
+        const type = document.getElementById('typeSelect').value;
+
+        pendingPin = { x: gridX, y: gridY, type: type };
+        document.getElementById('pinNameInput').value = defaultNames[type];
+        document.getElementById('pinImageInput').value = '';
+        pinModalBg.style.display = 'flex';
+
+        setMode(null);
+      }
+    });
+
+    function closePinModal() {
+      pinModalBg.style.display = 'none';
+      pendingPin = null;
+      if (pz) pz.setOptions({ disablePan: false });
+    }
+
+    function saveNewPin(updateData = null) {
+      // If updateData is provided (from drag), skip modal
+      if (updateData) {
+        console.log('Updating marker on server:', updateData);
+        fetch('/api/pins', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updateData)
+        })
+          .then(res => res.json())
+          .then(data => {
+            fetchSharedMarkers();
+          })
+          .catch(err => console.error('Error updating marker:', err));
+        return;
+      }
+
+      if (!pendingPin) return;
+
+      const name = document.getElementById('pinNameInput').value || 'Unknown';
+      const fileInput = document.getElementById('pinImageInput');
+      const file = fileInput.files[0];
+
+      const finishSave = (imgData) => {
+        const newMarker = {
+          id: Date.now().toString() + Math.floor(Math.random() * 1000),
+          x: pendingPin.x,
+          y: pendingPin.y,
+          type: pendingPin.type,
+          name: name,
+          image: imgData
+        };
+
+        fetch('/api/pins', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newMarker)
+        })
+          .then(res => res.json())
+          .then(data => {
+            closePinModal();
+            fetchSharedMarkers();
+            // Give it a tiny bit of time for the re-draw to happen, then focus
+            setTimeout(() => {
+              updatePanLock();
+              focusOnMarker({ ...newMarker, source: 'local' });
+            }, 100);
+          })
+          .catch(err => console.error('Error saving new marker:', err));
+      };
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 400;
+            let scaleSize = 1;
+            if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
+            canvas.width = img.width * scaleSize;
+            canvas.height = img.height * scaleSize;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            finishSave(canvas.toDataURL('image/jpeg', 0.8));
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        finishSave(null);
+      }
+    }
+
+    // Helper for direct global access
+    window.deleteLocalMarker = deleteLocalMarker;
+
+    function switchTab(tab) {
+      document.getElementById('tabGlobal').classList.remove('active');
+      document.getElementById('tabLocal').classList.remove('active');
+      document.getElementById('tabLocations').classList.remove('active');
+      document.getElementById('globalPinView').style.display = 'none';
+      document.getElementById('localPinView').style.display = 'none';
+      document.getElementById('locationsPinView').style.display = 'none';
+
+      if (tab === 'global') {
+        document.getElementById('tabGlobal').classList.add('active');
+        document.getElementById('globalPinView').style.display = 'block';
+      } else if (tab === 'local') {
+        document.getElementById('tabLocal').classList.add('active');
+        document.getElementById('localPinView').style.display = 'block';
+      } else if (tab === 'locations') {
+        document.getElementById('tabLocations').classList.add('active');
+        document.getElementById('locationsPinView').style.display = 'block';
+      }
+    }
+
+    init();
+  </script>
+</body>
+
+</html>
