@@ -33,8 +33,11 @@ DATA_FILE = "shared_pins.json"
 GLOBAL_FILE = "dataset.json"
 
 class SharedData(BaseModel):
-    markers: List[dict]
-    deleted_ids: List[str]
+    markers: List[dict] = []
+    deleted_ids: List[str] = []
+
+    def __init__(self, **data):
+        super().__init__(**data)
 
 def load_shared_data() -> SharedData:
     if not os.path.exists(DATA_FILE):
