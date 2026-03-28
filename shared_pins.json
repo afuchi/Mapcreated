@@ -1,0 +1,2910 @@
+{
+  "markers": [
+    {
+      "id": "1774456282316558",
+      "x": 57.812499999999986,
+      "y": 52.86063667949591,
+      "type": "car",
+      "name": "Vehicle SpawnTest Marker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "102",
+      "x": 74.957870436335,
+      "y": 71.23412614061574,
+      "type": "boat",
+      "name": "Brightmoor Shore Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "103",
+      "x": 78.14279735064368,
+      "y": 63.04298973611176,
+      "type": "boat",
+      "name": "East Coast Boat 1",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "106",
+      "x": 92.1117750449801,
+      "y": 46.27329831337722,
+      "type": "boat",
+      "name": "Cape Bay Shore Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "104",
+      "x": 82.61287021283135,
+      "y": 52.305959584261906,
+      "type": "boat",
+      "name": "East Coast Boat 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "108",
+      "x": 32.065450056106485,
+      "y": 94.91528362014392,
+      "type": "boat",
+      "name": "Airfield Coast Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774690744048607",
+      "x": 47.07978778891804,
+      "y": 91.53532540167436,
+      "type": "boat",
+      "name": "Pinecrest Shore Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774690801395787",
+      "x": 13.183307382446522,
+      "y": 81.43099176190115,
+      "type": "boat",
+      "name": "Boat Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774690822228546",
+      "x": 18.375629150855247,
+      "y": 76.43522490965024,
+      "type": "boat",
+      "name": "Boat Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "99",
+      "x": 27.564270903780653,
+      "y": 66.73693559332445,
+      "type": "boat",
+      "name": "Center River Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "98",
+      "x": 23.367758179626218,
+      "y": 70.51951247716815,
+      "type": "boat",
+      "name": "Sultan Dock Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "96",
+      "x": 17.45949359126826,
+      "y": 68.11785411897431,
+      "type": "boat",
+      "name": "Woodhaven Coast Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "97",
+      "x": 33.14751790111541,
+      "y": 33.5063497445692,
+      "type": "boat",
+      "name": "West River Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774690976459111",
+      "x": 41.41797970426549,
+      "y": 24.641082766141825,
+      "type": "boat",
+      "name": "Hayward Boat Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "101",
+      "x": 47.38213503299613,
+      "y": 39.54789060369974,
+      "type": "boat",
+      "name": "Lake Boat 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "100",
+      "x": 46.84766369766961,
+      "y": 42.167017246392874,
+      "type": "boat",
+      "name": "Lake Boat 1",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "95",
+      "x": 1.4892187218996413,
+      "y": 50.59389117051381,
+      "type": "boat",
+      "name": "Turtle Bay Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "107",
+      "x": 3.3483813434351353,
+      "y": 45.90639902451954,
+      "type": "boat",
+      "name": "Turtle Bay North Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "160",
+      "x": 62.820141915673354,
+      "y": 71.39045797826667,
+      "type": "gas",
+      "name": "Brightmoor Gas",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "156",
+      "x": 30.647353284083888,
+      "y": 66.25055508282604,
+      "type": "gas",
+      "name": "Haven Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "162",
+      "x": 20.753355919960672,
+      "y": 59.53441529945027,
+      "type": "gas",
+      "name": "Woodhaven Outlet Gas",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691152954886",
+      "x": 43.744823785924176,
+      "y": 83.68642919444774,
+      "type": "gas",
+      "name": "Pinecrest Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "158",
+      "x": 26.207471866413464,
+      "y": 75.56179859325425,
+      "type": "gas",
+      "name": "Sultan Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "154",
+      "x": 21.8572089919915,
+      "y": 10.7680257808876,
+      "type": "gas",
+      "name": "Far NW Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "161",
+      "x": 47.36545906299066,
+      "y": 19.68007606793814,
+      "type": "gas",
+      "name": "Hayward Valley Main Gas",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "157",
+      "x": 27.29899188699915,
+      "y": 29.84976684015246,
+      "type": "gas",
+      "name": "Center Map Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "159",
+      "x": 77.54487969106853,
+      "y": 28.3348161539655,
+      "type": "gas",
+      "name": "NE Coast Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691247176124",
+      "x": 43.275826819521356,
+      "y": 28.65635100320492,
+      "type": "gas",
+      "name": "Hayward Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "155",
+      "x": 42.2856964875111,
+      "y": 39.64208915160328,
+      "type": "gas",
+      "name": "Cedar Park Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691271336486",
+      "x": 48.66725724501869,
+      "y": 30.949653515354324,
+      "type": "gas",
+      "name": "Lower Hayward Gas Station",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "165",
+      "x": 23.871682647385914,
+      "y": 78.48235277214309,
+      "type": "tower",
+      "name": "Sultan Water Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "173",
+      "x": 11.922220521760297,
+      "y": 51.825650276344334,
+      "type": "tower",
+      "name": "Woodhaven Comm Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "169",
+      "x": 35.80037792219902,
+      "y": 60.637807412331846,
+      "type": "tower",
+      "name": "Center Radio Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "176",
+      "x": 38.44418093841631,
+      "y": 36.52907562519619,
+      "type": "tower",
+      "name": "Cedar Park Radio Relay",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691389664453",
+      "x": 47.303979041862235,
+      "y": 85.78098087571736,
+      "type": "tower",
+      "name": "Pinecrest Water Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "175",
+      "x": 21.93818433867021,
+      "y": 86.7736992531,
+      "type": "tower",
+      "name": "Airfield Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "174",
+      "x": 19.737938770983256,
+      "y": 12.238754155555402,
+      "type": "tower",
+      "name": "Orca Hospital Antenna",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "168",
+      "x": 66.90502233820266,
+      "y": 33.3244790890855,
+      "type": "tower",
+      "name": "North Orca Radio Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "163",
+      "x": 51.32179708885584,
+      "y": 30.43035998056176,
+      "type": "tower",
+      "name": "Hayward Water Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "171",
+      "x": 88.24837825923662,
+      "y": 45.86389759183097,
+      "type": "tower",
+      "name": "Cape Bay Radio Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691469744724",
+      "x": 91.1907951700735,
+      "y": 42.143276635213866,
+      "type": "tower",
+      "name": "Cape Bay Water Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691503939813",
+      "x": 77.84879224015232,
+      "y": 86.74157166624093,
+      "type": "tower",
+      "name": "Brightmoor Radio Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691606134868",
+      "x": 39.49349087601069,
+      "y": 14.863020295481011,
+      "type": "tower",
+      "name": "North Water Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691588021114",
+      "x": 48.97813348600332,
+      "y": 17.944751512436056,
+      "type": "tower",
+      "name": "North Hayward Water Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "170",
+      "x": 21.096324584274644,
+      "y": 33.717833473783585,
+      "type": "tower",
+      "name": "NW Radio Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691682351770",
+      "x": 17.69988075428013,
+      "y": 82.57663493293192,
+      "type": "tower",
+      "name": "Rocky Ripple Tower",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "178",
+      "x": 32.63120251895473,
+      "y": 31.808511937001636,
+      "type": "tunnel",
+      "name": "West Hayward Tunnel",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "180",
+      "x": 27.48317274908123,
+      "y": 16.556963619067012,
+      "type": "tunnel",
+      "name": "North Hayward Tunnel",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691726687572",
+      "x": 71.70603722951228,
+      "y": 37.35035296986179,
+      "type": "tunnel",
+      "name": "Orca Dam Tunnel",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "13",
+      "x": 77.69850261263367,
+      "y": 88.58147558331127,
+      "type": "bunker",
+      "name": "Lumber Yard Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "12",
+      "x": 67.15245786790189,
+      "y": 71.11778701160392,
+      "type": "bunker",
+      "name": "Brightmoor Bunker 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "27",
+      "x": 52.08309845022497,
+      "y": 53.449903287256284,
+      "type": "bunker",
+      "name": "Center Map Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "28",
+      "x": 41.011732347441956,
+      "y": 52.2314285476461,
+      "type": "bunker",
+      "name": "West Center Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "17",
+      "x": 70.38160631454691,
+      "y": 44.05749383609446,
+      "type": "bunker",
+      "name": "Orca Dam Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "7",
+      "x": 27.282785890210974,
+      "y": 72.72069946371768,
+      "type": "bunker",
+      "name": "Sultan Bunker 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "11",
+      "x": 62.80452347357933,
+      "y": 87.50942411035354,
+      "type": "bunker",
+      "name": "Brightmoor Bunker 1",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "9",
+      "x": 47.20557138480008,
+      "y": 72.51298064659547,
+      "type": "bunker",
+      "name": "Pinecrest Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691940930295",
+      "x": 23.042488737475345,
+      "y": 83.873922664594,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691955702640",
+      "x": 30.124386250435908,
+      "y": 74.73706948336473,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691959292965",
+      "x": 24.857724580246817,
+      "y": 69.2202013849693,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691966848707",
+      "x": 25.46959509700864,
+      "y": 74.3065943932701,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774691982869121",
+      "x": 14.3963452711078,
+      "y": 72.93414673828474,
+      "type": "bunker",
+      "name": "Horseshoe Farm Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692018471629",
+      "x": 42.221524437194795,
+      "y": 53.632138038380084,
+      "type": "bunker",
+      "name": "Cave Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692026005492",
+      "x": 48.96353709193384,
+      "y": 58.32204104878319,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177469203234077",
+      "x": 52.49887535759024,
+      "y": 65.31099328013886,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692058890827",
+      "x": 22.305814005889438,
+      "y": 58.38256691884749,
+      "type": "bunker",
+      "name": "Woodhaven Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692069298206",
+      "x": 17.25254878185276,
+      "y": 59.097902290222024,
+      "type": "bunker",
+      "name": "Woodhaven Cave Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692075258695",
+      "x": 10.484580326098216,
+      "y": 57.44769401902548,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692087895844",
+      "x": 4.048705040995449,
+      "y": 49.24529530898656,
+      "type": "bunker",
+      "name": "Turtle Bay Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692100167507",
+      "x": 32.56105813572564,
+      "y": 31.863602704021226,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692108408662",
+      "x": 71.60454079779188,
+      "y": 37.233538256140044,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "26",
+      "x": 45.19882398842216,
+      "y": 30.54862447961823,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 8",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "25",
+      "x": 40.51544642131153,
+      "y": 25.153357065069603,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 7",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "19",
+      "x": 45.682433628504235,
+      "y": 19.83372424044455,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 1",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "21",
+      "x": 49.525857610209165,
+      "y": 22.50614641774434,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 3",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "20",
+      "x": 45.17446101069573,
+      "y": 22.298235286743026,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "24",
+      "x": 48.27384250681635,
+      "y": 23.918177826135047,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 6",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "22",
+      "x": 47.175906626271775,
+      "y": 25.19827228033993,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 4",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "23",
+      "x": 45.071423591174664,
+      "y": 25.47658942627996,
+      "type": "bunker",
+      "name": "Hayward Valley Bunker 5",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774692172863795",
+      "x": 48.482161322388315,
+      "y": 46.90903741495466,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "14",
+      "x": 88.20573435001849,
+      "y": 39.2391119304564,
+      "type": "bunker",
+      "name": "Cape Bay Bunker 1",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "15",
+      "x": 91.02483203093223,
+      "y": 44.16378066971422,
+      "type": "bunker",
+      "name": "Cape Bay Bunker 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "8",
+      "x": 30.50889410589991,
+      "y": 83.73612984242858,
+      "type": "bunker",
+      "name": "South Sultan Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700769849638",
+      "x": 81.36772991279474,
+      "y": 90.79425077600185,
+      "type": "tent",
+      "name": "Tent",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700788488527",
+      "x": 72.27176282359507,
+      "y": 87.03943255560141,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700798914691",
+      "x": 69.78667911585653,
+      "y": 80.62522563240677,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700807673318",
+      "x": 59.58530951961466,
+      "y": 85.63794325195084,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470081538485",
+      "x": 62.06138475697589,
+      "y": 87.13327092249813,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700844416879",
+      "x": 74.30221460453471,
+      "y": 66.18940783690691,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700865003645",
+      "x": 72.30866724730075,
+      "y": 61.7323642180376,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700874030530",
+      "x": 79.73547733375108,
+      "y": 57.692492202553055,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "54",
+      "x": 68.84470144688338,
+      "y": 37.4874087797578,
+      "type": "tent",
+      "name": "North Orca Dam Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700942122316",
+      "x": 73.42507942639426,
+      "y": 22.02457641156079,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "55",
+      "x": 75.83186081770904,
+      "y": 38.59097075507544,
+      "type": "tent",
+      "name": "Orca Dam Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "56",
+      "x": 68.62789192117037,
+      "y": 48.87143060022219,
+      "type": "tent",
+      "name": "South Orca Dam Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470108498450",
+      "x": 62.72896515504628,
+      "y": 64.87336515866215,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701099614615",
+      "x": 63.67250380238926,
+      "y": 65.99486383977971,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700849192741",
+      "x": 70.56891355205988,
+      "y": 66.81049924422884,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "42",
+      "x": 61.14231932515282,
+      "y": 67.67523102197498,
+      "type": "tent",
+      "name": "Brightmoor Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701303954377",
+      "x": 59.1386265279642,
+      "y": 71.43926604878553,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701407900877",
+      "x": 61.17002107164833,
+      "y": 61.35479801236675,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701468541492",
+      "x": 60.22648242430533,
+      "y": 60.391895104336534,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701518021860",
+      "x": 57.790437189347045,
+      "y": 61.67198955854142,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701573639222",
+      "x": 57.46999368400948,
+      "y": 58.63054279447235,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701546541833",
+      "x": 54.56567052867326,
+      "y": 61.20496992976242,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701589600903",
+      "x": 58.81411184278244,
+      "y": 55.454827273570096,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701601049680",
+      "x": 57.21295535032161,
+      "y": 51.11610005268098,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701620403867",
+      "x": 59.28176826272662,
+      "y": 43.829218349701435,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701629480960",
+      "x": 53.620536378668646,
+      "y": 41.56356444845386,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "52",
+      "x": 53.5021275891087,
+      "y": 50.259387588783866,
+      "type": "tent",
+      "name": "East Center Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701672891798",
+      "x": 50.880454277084816,
+      "y": 52.805751812400246,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701686339704",
+      "x": 51.81827480945523,
+      "y": 56.11360375875268,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470167623765",
+      "x": 49.69189640120606,
+      "y": 53.51104479085726,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "51",
+      "x": 48.3861780397019,
+      "y": 57.63736423998308,
+      "type": "tent",
+      "name": "South Center Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701760098347",
+      "x": 42.11160500097452,
+      "y": 52.4810884003985,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701767915814",
+      "x": 39.17233837486762,
+      "y": 54.19165884704543,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701772441560",
+      "x": 39.17233837486762,
+      "y": 54.19165884704543,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701739296279",
+      "x": 45.0750820583475,
+      "y": 55.9726573104273,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470182777794",
+      "x": 45.39262225066929,
+      "y": 70.69753960010456,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701848389519",
+      "x": 51.863575386557784,
+      "y": 72.39821242923344,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701845352492",
+      "x": 51.38322843881953,
+      "y": 70.77826988984141,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701833907370",
+      "x": 46.399657091192005,
+      "y": 68.88741506890705,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "40",
+      "x": 42.55408464901534,
+      "y": 89.37834647461443,
+      "type": "tent",
+      "name": "South Pinecrest Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "39",
+      "x": 39.97722394017409,
+      "y": 79.13471364442098,
+      "type": "tent",
+      "name": "Pinecrest Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701850611325",
+      "x": 50.12700579697279,
+      "y": 74.09944415254324,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701934598567",
+      "x": 50.12700579697279,
+      "y": 74.09944415254324,
+      "type": "tent",
+      "name": "Cul de Sac Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701976012215",
+      "x": 53.79284554493932,
+      "y": 58.27847035596062,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702045504545",
+      "x": 30.85576278060435,
+      "y": 76.05173958041058,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702050541191",
+      "x": 32.77444438797508,
+      "y": 74.70336592644978,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702063986285",
+      "x": 31.70100114208237,
+      "y": 70.87329983579946,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "38",
+      "x": 25.17284817603806,
+      "y": 76.32012094622979,
+      "type": "tent",
+      "name": "South Sultan Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "35",
+      "x": 30.90648724716839,
+      "y": 96.96550331054797,
+      "type": "tent",
+      "name": "Airfield Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702098836388",
+      "x": 19.204379553581997,
+      "y": 86.9626692388968,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702110012248",
+      "x": 22.606838194487334,
+      "y": 83.4962215824412,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702121024951",
+      "x": 15.737498737813969,
+      "y": 80.93125952215647,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702125710574",
+      "x": 15.600254001318667,
+      "y": 78.76755961602366,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702142844382",
+      "x": 19.99199752349697,
+      "y": 76.11674455156397,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702182105518",
+      "x": 17.285697039489914,
+      "y": 73.45450402537928,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "59",
+      "x": 21.214247524712135,
+      "y": 70.2939199918706,
+      "type": "tent",
+      "name": "River Fork Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "36",
+      "x": 13.837490827303265,
+      "y": 69.97672844569593,
+      "type": "tent",
+      "name": "Horseshoe Beach Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702198678465",
+      "x": 5.65027934644624,
+      "y": 69.62042313987024,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "34",
+      "x": 16.472000748441552,
+      "y": 59.609319295626804,
+      "type": "tent",
+      "name": "South Woodhaven Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702220318302",
+      "x": 9.014231480496056,
+      "y": 59.15551178315758,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "33",
+      "x": 15.984274802299334,
+      "y": 58.16978740386909,
+      "type": "tent",
+      "name": "Woodhaven Tents 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "31",
+      "x": 17.682246720130237,
+      "y": 46.27672884275417,
+      "type": "tent",
+      "name": "North Woodhaven Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702255215220",
+      "x": 19.822468209449,
+      "y": 47.14963120056425,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702261863539",
+      "x": 15.08190248288621,
+      "y": 47.53479044495528,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "57",
+      "x": 32.64255737619393,
+      "y": 26.69445657391955,
+      "type": "tent",
+      "name": "West River Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "44",
+      "x": 30.559625704270626,
+      "y": 14.469465370166212,
+      "type": "tent",
+      "name": "Far North Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "43",
+      "x": 34.50786932119987,
+      "y": 18.626578248016845,
+      "type": "tent",
+      "name": "North Hayward Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "47",
+      "x": 43.45418772979134,
+      "y": 30.69341750443444,
+      "type": "tent",
+      "name": "South Hayward Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702378477335",
+      "x": 40.910089181096325,
+      "y": 31.445641097595505,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702383988494",
+      "x": 42.34541149024924,
+      "y": 33.31480590872993,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702387802773",
+      "x": 42.945845174922056,
+      "y": 35.50116192343384,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702396405800",
+      "x": 48.187642344326335,
+      "y": 38.9194575920144,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "58",
+      "x": 37.442435898575546,
+      "y": 51.1318481107408,
+      "type": "tent",
+      "name": "Cave Park Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701778866601",
+      "x": 40.297415565311375,
+      "y": 54.97115850062024,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702450335464",
+      "x": 34.04563527318912,
+      "y": 48.26268604518572,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702456321637",
+      "x": 36.69326261761352,
+      "y": 45.759139513668444,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702467469561",
+      "x": 49.984373437343734,
+      "y": 46.36434455304625,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702473566780",
+      "x": 48.05726866791214,
+      "y": 47.995615377003226,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702477647120",
+      "x": 45.19806064566064,
+      "y": 45.14089146143127,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702482304590",
+      "x": 46.39320959896177,
+      "y": 45.62800705019951,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702495233607",
+      "x": 44.014348524448515,
+      "y": 45.97918340489288,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702499632662",
+      "x": 43.042217796883,
+      "y": 43.67954469512659,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702503430660",
+      "x": 42.4646577763882,
+      "y": 44.21197336191977,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470251223477",
+      "x": 41.43534288837766,
+      "y": 40.68888154547979,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702522271367",
+      "x": 41.13226683801901,
+      "y": 41.617799644991294,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702514374124",
+      "x": 38.547542785903644,
+      "y": 41.42521906338525,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702558547609",
+      "x": 27.436794102505797,
+      "y": 59.976505716306875,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702561720903",
+      "x": 27.242368291297257,
+      "y": 58.141325280698084,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702567828820",
+      "x": 32.45184530783949,
+      "y": 58.571799521935134,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702573427922",
+      "x": 32.04583776867978,
+      "y": 57.08779621661797,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702589994413",
+      "x": 33.862305695672944,
+      "y": 63.44302984471767,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "119",
+      "x": 16.60659429481523,
+      "y": 15.299955355343547,
+      "type": "military",
+      "name": "Orca Hospital Military Guard",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "111",
+      "x": 66.96577609618802,
+      "y": 33.14270788154549,
+      "type": "military",
+      "name": "North East Military Array",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "120",
+      "x": 87.69857760271495,
+      "y": 39.25861991096691,
+      "type": "military",
+      "name": "Cape Bay Checkpoint",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702694982822",
+      "x": 76.36917787237238,
+      "y": 45.206204086367556,
+      "type": "military",
+      "name": "Military Outpost",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702701590396",
+      "x": 70.17613543439376,
+      "y": 47.56248330690986,
+      "type": "military",
+      "name": "Military Outpost",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702730724312",
+      "x": 57.20929838780052,
+      "y": 56.46843548967837,
+      "type": "military",
+      "name": "Military Outpost",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702739985452",
+      "x": 55.18838247305958,
+      "y": 49.505366157170364,
+      "type": "military",
+      "name": "Military Outpost",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702746282516",
+      "x": 54.905106810062506,
+      "y": 50.592249073389354,
+      "type": "military",
+      "name": "Military Outpost",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "122",
+      "x": 33.08333594818322,
+      "y": 46.54630566162212,
+      "type": "military",
+      "name": "Hayward Distributors Command",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "110",
+      "x": 35.781698865671366,
+      "y": 60.526841537220655,
+      "type": "military",
+      "name": "Radio Tower Military",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "109",
+      "x": 29.485518724865685,
+      "y": 90.33827833077633,
+      "type": "military",
+      "name": "Amalgamated Airfield Command",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "112",
+      "x": 65.81854757339876,
+      "y": 72.84717984184661,
+      "type": "military",
+      "name": "South East Military Checkpoint",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "140",
+      "x": 12.522127936736311,
+      "y": 86.6317894903515,
+      "type": "cave",
+      "name": "South Coast Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702880827976",
+      "x": 24.83306561464543,
+      "y": 69.06019916918042,
+      "type": "cave",
+      "name": "Sultan Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702888999438",
+      "x": 30.244075194906472,
+      "y": 74.85961531466741,
+      "type": "cave",
+      "name": "Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702896455399",
+      "x": 30.51941597209023,
+      "y": 83.7900231938296,
+      "type": "cave",
+      "name": "Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702911958458",
+      "x": 17.28635827863579,
+      "y": 58.777555125457404,
+      "type": "cave",
+      "name": "Woodhaven Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702917309325",
+      "x": 10.464287111340704,
+      "y": 57.4634765917765,
+      "type": "cave",
+      "name": "Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "139",
+      "x": 42.16526430034334,
+      "y": 53.52359731895597,
+      "type": "cave",
+      "name": "Center Cave",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703001443537",
+      "x": 20.794947044565735,
+      "y": 14.34037789873622,
+      "type": "location",
+      "name": "Orca Hospital",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703053476651",
+      "x": 45.66650460314396,
+      "y": 16.253813194794596,
+      "type": "location",
+      "name": "Hayward Harbour",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470306473716",
+      "x": 45.85213248387805,
+      "y": 27.912548685525724,
+      "type": "location",
+      "name": "Hayward City",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703079373888",
+      "x": 48.162611568363516,
+      "y": 35.016876869979704,
+      "type": "location",
+      "name": "Hayward Downtown",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470308722279",
+      "x": 45.02173552813265,
+      "y": 40.75869641069767,
+      "type": "location",
+      "name": "Cedar Park",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703096402825",
+      "x": 89.49440565614944,
+      "y": 40.845769341841844,
+      "type": "location",
+      "name": "Cape Bay",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703106705998",
+      "x": 70.98457644704654,
+      "y": 44.42100682031928,
+      "type": "location",
+      "name": "Orca Dam",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703119112618",
+      "x": 58.13926871189417,
+      "y": 42.36710678706227,
+      "type": "location",
+      "name": "Clyde Hill",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703165929738",
+      "x": 23.047215724061008,
+      "y": 20.978398292479735,
+      "type": "location",
+      "name": "Spafbi's Paint & Body Shop",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703189581860",
+      "x": 20.499981620653433,
+      "y": 19.508438728331342,
+      "type": "location",
+      "name": "Junkyard",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703282325670",
+      "x": 48.18766944865388,
+      "y": 11.034882601024233,
+      "type": "location",
+      "name": "Cargo Ship",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703327553369",
+      "x": 77.10700252682473,
+      "y": 69.09664515993154,
+      "type": "location",
+      "name": "Brightmoor Shore",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703337286571",
+      "x": 65.62934383892602,
+      "y": 72.78275166478355,
+      "type": "location",
+      "name": "Brightmoor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703364048878",
+      "x": 71.99272096567178,
+      "y": 83.724247257307,
+      "type": "location",
+      "name": "Lumber Yard",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703406148114",
+      "x": 55.77414716009778,
+      "y": 76.46990487799734,
+      "type": "location",
+      "name": "Pine Parks",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470341613472",
+      "x": 54.62471896973305,
+      "y": 83.6798330016157,
+      "type": "location",
+      "name": "Pinecrest Derby",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703425120994",
+      "x": 45.98915546081127,
+      "y": 80.30155628873935,
+      "type": "location",
+      "name": "Pinecrest",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703434935868",
+      "x": 47.097756336956294,
+      "y": 73.37640904492767,
+      "type": "location",
+      "name": "Cul de Sac",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703459287800",
+      "x": 39.43876742122248,
+      "y": 59.04893588376008,
+      "type": "location",
+      "name": "Radiation Valley",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703489870843",
+      "x": 53.116909998795805,
+      "y": 70.79861926937538,
+      "type": "location",
+      "name": "Dead Forest",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703501033940",
+      "x": 38.057504168280865,
+      "y": 72.78556344181393,
+      "type": "location",
+      "name": "Cine-Park",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703520332514",
+      "x": 26.073959632668476,
+      "y": 91.56846703883113,
+      "type": "location",
+      "name": "Amalgamated Airfield",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703535411811",
+      "x": 13.712820994885192,
+      "y": 85.7056763949845,
+      "type": "location",
+      "name": "Stairway to Hope Memorial",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703561419227",
+      "x": 17.15296032033995,
+      "y": 80.07651128800883,
+      "type": "location",
+      "name": "Rocky Ripple",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703576206275",
+      "x": 12.764612107688066,
+      "y": 72.39376519843117,
+      "type": "location",
+      "name": "Horseshoe Beach",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703587349355",
+      "x": 26.974350600033663,
+      "y": 72.88960916165512,
+      "type": "location",
+      "name": "Sultan",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703612292876",
+      "x": 26.145816864607834,
+      "y": 63.49075907093681,
+      "type": "location",
+      "name": "Haven Distributors",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703625834652",
+      "x": 20.39259133882665,
+      "y": 56.02582279478,
+      "type": "location",
+      "name": "Woodhaven",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703638164245",
+      "x": 3.855857944182803,
+      "y": 49.65607488005856,
+      "type": "location",
+      "name": "Turtle Bay",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703835816440",
+      "x": 19.325650230097455,
+      "y": 34.51178949599252,
+      "type": "location",
+      "name": "Woodhaven Military Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703848981650",
+      "x": 62.62695045504064,
+      "y": 59.92373951974326,
+      "type": "location",
+      "name": "Brightmoor Military Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "91",
+      "x": 27.8751895400714,
+      "y": 78.91393545197931,
+      "type": "car",
+      "name": "Sultan Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "68",
+      "x": 27.453238513685424,
+      "y": 75.84900022111127,
+      "type": "car",
+      "name": "Sultan Pick-Up",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "77",
+      "x": 21.039582912618492,
+      "y": 87.9415628592634,
+      "type": "car",
+      "name": "Airfield ATV",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703967993599",
+      "x": 29.872424398298385,
+      "y": 96.66269674346066,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "75",
+      "x": 31.181943701050358,
+      "y": 92.13138861192685,
+      "type": "car",
+      "name": "Airfield Cargo Truck",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703973081257",
+      "x": 31.181943701050358,
+      "y": 92.13138861192685,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774703979508556",
+      "x": 28.898338156559415,
+      "y": 93.34245741065669,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470398759832",
+      "x": 25.531337076932047,
+      "y": 92.12297787286951,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "17747039913408",
+      "x": 24.353342415071513,
+      "y": 90.77491130927878,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704005387325",
+      "x": 24.592476210356573,
+      "y": 89.34053992925251,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704007632791",
+      "x": 23.14571793301705,
+      "y": 89.18194531792481,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704011674375",
+      "x": 20.017744356673905,
+      "y": 91.42494268015992,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704023238762",
+      "x": 17.953396164608325,
+      "y": 85.94206023914077,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704034660599",
+      "x": 22.87296481831486,
+      "y": 83.7672885163056,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704052770693",
+      "x": 18.08116276533587,
+      "y": 79.09700344618241,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704056099222",
+      "x": 17.263427944348088,
+      "y": 81.340000534666,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704065593552",
+      "x": 14.272699145268353,
+      "y": 82.46149921578355,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704062251478",
+      "x": 14.650114604205552,
+      "y": 84.00214386863189,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704086940746",
+      "x": 32.206095819887906,
+      "y": 86.96371195108983,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704092336756",
+      "x": 33.62998141496915,
+      "y": 86.30667231972802,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704103047545",
+      "x": 26.323701417641704,
+      "y": 82.1069865664083,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704130787595",
+      "x": 25.805965284532657,
+      "y": 75.41855697251818,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470413493019",
+      "x": 28.007555461666318,
+      "y": 73.39079673090157,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704156361722",
+      "x": 23.901732741713158,
+      "y": 69.5165285597682,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470416476654",
+      "x": 24.044693142825736,
+      "y": 70.50208800681091,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704195769907",
+      "x": 12.150384978064157,
+      "y": 71.58960187940974,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704199515126",
+      "x": 11.33836989974473,
+      "y": 70.66068377989825,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704217247650",
+      "x": 12.129907393625396,
+      "y": 60.704830033640064,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704219808724",
+      "x": 12.00982028054835,
+      "y": 62.15484598348162,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704245097678",
+      "x": 22.069377861898953,
+      "y": 60.200410763864475,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704256540483",
+      "x": 21.600466775538163,
+      "y": 55.623788855766165,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704260381668",
+      "x": 20.37672574201452,
+      "y": 54.78549691230455,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704279811736",
+      "x": 2.803665946780353,
+      "y": 49.79841548750647,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "74",
+      "x": 30.358648836758324,
+      "y": 53.47225766749625,
+      "type": "car",
+      "name": "West Center Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704319096275",
+      "x": 31.18325324066212,
+      "y": 52.28433061120257,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704343811701",
+      "x": 29.931710972197184,
+      "y": 59.04267528604584,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704347397139",
+      "x": 27.68437281270586,
+      "y": 59.80166903125884,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704354401935",
+      "x": 31.74513317829612,
+      "y": 66.63625954196172,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704359954709",
+      "x": 26.983914153027694,
+      "y": 63.54994521513875,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470436959071",
+      "x": 37.912805698965194,
+      "y": 72.04613204171488,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704374492205",
+      "x": 36.934955045744466,
+      "y": 73.0656731835199,
+      "type": "car",
+      "name": "Bus",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704389131787",
+      "x": 19.831814889632014,
+      "y": 56.73205320732359,
+      "type": "car",
+      "name": "Bus",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704411391293",
+      "x": 35.92425137170994,
+      "y": 78.64002261516745,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470442026631",
+      "x": 41.4889927960498,
+      "y": 71.49043374430283,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704427762161",
+      "x": 40.910827812459345,
+      "y": 65.81649391884197,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704437813746",
+      "x": 39.54549257388717,
+      "y": 58.09975777319873,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704446539841",
+      "x": 48.747017266844274,
+      "y": 58.54222753789554,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470447076360",
+      "x": 45.39528283286176,
+      "y": 74.1753091586059,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704474038996",
+      "x": 48.7577132050664,
+      "y": 74.71906951879753,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470448014830",
+      "x": 47.34526444207417,
+      "y": 72.69130927718095,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "81",
+      "x": 45.068960486783354,
+      "y": 88.14504565346452,
+      "type": "car",
+      "name": "South Pinecrest Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704504408852",
+      "x": 53.112152875339866,
+      "y": 81.51441366571973,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704506546865",
+      "x": 53.358044887493016,
+      "y": 84.22187247110543,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "17747045128820",
+      "x": 48.38302292877541,
+      "y": 80.27963468293464,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704520237205",
+      "x": 45.08349687109718,
+      "y": 78.70500522156757,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704538092639",
+      "x": 65.00164839988325,
+      "y": 86.45352413750022,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704548491215",
+      "x": 76.10974912591195,
+      "y": 86.81767079466918,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704559359705",
+      "x": 65.11954741060212,
+      "y": 83.52786880647817,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704563135610",
+      "x": 63.066636505596044,
+      "y": 82.70090847397152,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704568771943",
+      "x": 67.9330570793382,
+      "y": 81.05636084790243,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704576405469",
+      "x": 67.97880614734014,
+      "y": 79.1871978807164,
+      "type": "car",
+      "name": "Tractor",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "64",
+      "x": 66.65213362501544,
+      "y": 74.63323353920876,
+      "type": "car",
+      "name": "Brightmoor Sedan",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704600921303",
+      "x": 62.51200040879527,
+      "y": 74.11213314192183,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704618203526",
+      "x": 68.37780527621092,
+      "y": 70.27713778011184,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704622966346",
+      "x": 63.728733032029986,
+      "y": 71.11542972357346,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704637804337",
+      "x": 64.38635087714785,
+      "y": 72.25958494370349,
+      "type": "car",
+      "name": "Bus",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "65",
+      "x": 81.1398693547238,
+      "y": 54.695280633958355,
+      "type": "car",
+      "name": "Brightmoor Shore Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704658468282",
+      "x": 71.04303027376281,
+      "y": 51.60560074546174,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704666114446",
+      "x": 70.57183977277015,
+      "y": 44.14862244851403,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470466968637",
+      "x": 68.49605474861558,
+      "y": 44.25057687407018,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704690595342",
+      "x": 57.35054185941186,
+      "y": 41.400896515241605,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "88",
+      "x": 59.334833935053666,
+      "y": 43.73452109679773,
+      "type": "car",
+      "name": "Clyde Hill Outskirts Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704697397593",
+      "x": 56.60714948182572,
+      "y": 43.73452109679773,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704719844579",
+      "x": 48.6761458239452,
+      "y": 52.387667786100245,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704464947923",
+      "x": 59.80704085411399,
+      "y": 64.92756420833099,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704744824915",
+      "x": 53.924237259238204,
+      "y": 70.30409730045301,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704753678391",
+      "x": 51.285242041833854,
+      "y": 63.516838532957344,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "17747047753859",
+      "x": 47.819037198521215,
+      "y": 36.53070873685478,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "71",
+      "x": 41.85249427038484,
+      "y": 39.794502498564995,
+      "type": "car",
+      "name": "Cedar Park Bus",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "73",
+      "x": 48.847811273545176,
+      "y": 43.106861552665166,
+      "type": "car",
+      "name": "Cedar Park Pick-Up",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177470479354210",
+      "x": 51.21939435510442,
+      "y": 34.92736266396883,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704797609175",
+      "x": 46.35302432371153,
+      "y": 33.82851914589697,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704800158114",
+      "x": 49.292290170586064,
+      "y": 32.15193525897375,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "60",
+      "x": 46.474778609813505,
+      "y": 21.78140466060429,
+      "type": "car",
+      "name": "Hayward Valley Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "61",
+      "x": 49.034040928042906,
+      "y": 27.52733363200255,
+      "type": "car",
+      "name": "Hayward Valley Bus",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "63",
+      "x": 38.93348564543089,
+      "y": 24.637469355211074,
+      "type": "car",
+      "name": "West Hayward Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "90",
+      "x": 49.32626560341298,
+      "y": 23.37115460900387,
+      "type": "car",
+      "name": "Hayward Valley Taxi",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774704827668591",
+      "x": 46.507086493473,
+      "y": 23.314513261472683,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "70",
+      "x": 34.601134918450164,
+      "y": 12.103242975008847,
+      "type": "car",
+      "name": "North Hayward Truck",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "87",
+      "x": 66.67882183547843,
+      "y": 34.44878041838095,
+      "type": "car",
+      "name": "North Orca Dam Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774705778201965",
+      "x": 20.982760889938298,
+      "y": 70.65588048853223,
+      "type": "home",
+      "name": "Home",
+      "image": null,
+      "source": "local"
+    }
+  ],
+  "deleted_ids": [
+    "149",
+    "172",
+    "2",
+    "1",
+    "183",
+    "152",
+    "151",
+    "3",
+    "184",
+    "185",
+    "186",
+    "187",
+    "188",
+    "189",
+    "190",
+    "191",
+    "192",
+    "193",
+    "194",
+    "195",
+    "196",
+    "197",
+    "198",
+    "199",
+    "200",
+    "201",
+    "202",
+    "203",
+    "204",
+    "4",
+    "5",
+    "6",
+    "72",
+    "177",
+    "164",
+    "166",
+    "167",
+    "179",
+    "182",
+    "181",
+    "16",
+    "41",
+    "49",
+    "50",
+    "53",
+    "37",
+    "46",
+    "45",
+    "48",
+    "115",
+    "114",
+    "117",
+    "116",
+    "118",
+    "121",
+    "138",
+    "143",
+    "135",
+    "141",
+    "136",
+    "137",
+    "142",
+    "92",
+    "79",
+    "78",
+    "76",
+    "86",
+    "83",
+    "82"
+  ]
+}

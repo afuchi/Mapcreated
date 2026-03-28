@@ -783,15 +783,17 @@
           if (!isAnyMarkerDragging) draw();
         })
         .catch(err => {
-          console.log('API not available, falling back to dataset.json', err);
-          // Fallback: load dataset.json directly for static hosting (e.g. GitHub Pages)
-          fetch('dataset.json')
-            .then(r => r.json())
-            .then(data => {
-              localMarkers = data.map(m => ({ ...m, source: 'global' }));
-              if (!isAnyMarkerDragging) draw();
-            })
-            .catch(err2 => console.error('Failed to load dataset.json fallback', err2));
+          console.log('API not available, falling back to static files', err);
+          // Fallback: load both datasets directly for static hosting (e.g. GitHub Pages)
+          Promise.all([
+            fetch('dataset.json').then(r => r.ok ? r.json() : []),
+            fetch('shared_pins.json').then(r => r.ok ? r.json() : [])
+          ]).then(([globalData, localData]) => {
+            const globalPins = globalData.map(m => ({ ...m, source: 'global' }));
+            const localPins = localData.map(m => ({ ...m, source: 'local' }));
+            localMarkers = [...globalPins, ...localPins];
+            if (!isAnyMarkerDragging) draw();
+          }).catch(err2 => console.error('Failed to load static datasets', err2));
         });
     }
 
