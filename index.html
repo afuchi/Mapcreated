@@ -561,6 +561,67 @@
       flex-direction: column;
       gap: 12px;
     }
+
+    /* Collapsible pin groups */
+    .pin-group {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .pin-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(0,0,0,0.3);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .pin-group-header:hover {
+      background: rgba(212,175,55,0.08);
+    }
+
+    .pin-group-title {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .pin-group-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pin-group-count {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .pin-group-arrow {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      transition: transform 0.2s;
+    }
+
+    .pin-group.open .pin-group-arrow { transform: rotate(180deg); }
+
+    .pin-group-body {
+      display: none;
+      padding: 6px 8px 8px;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .pin-group.open .pin-group-body { display: block; }
+
+    .pin-group-body ul { gap: 5px; }
+    .pin-group-body li { padding: 8px 12px; font-size: 13px; }
   </style>
 </head>
 
@@ -649,20 +710,7 @@
     </div>
 
     <div class="sidebar-section">
-      <div class="tabs">
-        <button id="tabLocations" onclick="switchTab('locations')">Locations</button>
-        <button id="tabGlobal" onclick="switchTab('global')" class="active">Global Data</button>
-        <button id="tabLocal" onclick="switchTab('local')">Shared Live</button>
-      </div>
-      <div id="locationsPinView" style="display: none;">
-        <ul id="locationsPinList"></ul>
-      </div>
-      <div id="globalPinView">
-        <ul id="globalPinList"></ul>
-      </div>
-      <div id="localPinView" style="display: none;">
-        <ul id="localPinList"></ul>
-      </div>
+      <div id="pinGroupsContainer" style="display:flex; flex-direction:column; gap:8px;"></div>
     </div>
   </div>
 
@@ -675,9 +723,7 @@
 
   <script>
     const overlay = document.getElementById('overlay');
-    const globalPinList = document.getElementById('globalPinList');
-    const localPinList = document.getElementById('localPinList');
-    const locationsPinList = document.getElementById('locationsPinList');
+    const pinGroupsContainer = document.getElementById('pinGroupsContainer');
     const mapContainer = document.getElementById('mapContainer');
     const mapWrap = document.getElementById('mapWrap');
     const placeBtn = document.getElementById('placeBtn');
@@ -951,7 +997,8 @@
     }
 
     function draw() {
-      overlay.innerHTML = ''; globalPinList.innerHTML = ''; localPinList.innerHTML = ''; locationsPinList.innerHTML = '';
+      overlay.innerHTML = '';
+      const sidebarItems = [];
 
       // localMarkers now contains the complete consolidated set from /api/pins
       const allMarkers = localMarkers;
@@ -972,7 +1019,7 @@
         label.className = 'label-container';
         label.innerText = m.name;
 
-        const isLocked = m.type === 'location' || m.source === 'local';
+        const isLocked = m.type === 'location';
         const canDelete = m.source === 'local';
 
         if (canDelete) {
@@ -1024,29 +1071,59 @@
           });
         }
 
-        // List addition
-        const li = document.createElement('li');
-        li.onclick = () => focusOnMarker(m);
+        // List addition — grouped by type
+        sidebarItems.push({ m, canDelete });
+      });
 
-        const titleSpan = document.createElement('span');
-        titleSpan.className = 'pin-name';
-        titleSpan.innerText = `${icons[m.type]} ${m.name}`;
-        li.appendChild(titleSpan);
+      // Build collapsible groups
+      pinGroupsContainer.innerHTML = '';
+      const groupOrder = ['location', 'military', 'bunker', 'car', 'boat', 'gas', 'tower', 'tunnel', 'tent', 'cave', 'stash', 'home', 'wreck', 'weapon'];
+      const grouped = {};
+      sidebarItems.forEach(({ m, canDelete }) => {
+        if (!grouped[m.type]) grouped[m.type] = [];
+        grouped[m.type].push({ m, canDelete });
+      });
 
-        if (m.source === 'local' || m.source === 'global') {
+      // Render in preferred order, then any remaining
+      const allTypes = [...new Set([...groupOrder, ...Object.keys(grouped)])];
+      allTypes.forEach(type => {
+        if (!grouped[type] || grouped[type].length === 0) return;
+        const items = grouped[type];
+        const label = { location:'📍 Locations', military:'🏰 Military', bunker:'🧱 Bunkers', car:'🚗 Vehicles', boat:'⛵ Boats', gas:'⛽ Gas Stations', tower:'🗼 Towers', tunnel:'🚇 Tunnels', tent:'⛺ Tents', cave:'🕳️ Caves', stash:'📦 Stashes', home:'🏠 Bases', wreck:'🛩️ Wrecks', weapon:'🔫 Weapons' }[type] || `${icons[type] || '📌'} ${type}`;
+
+        const group = document.createElement('div');
+        group.className = 'pin-group';
+
+        const header = document.createElement('div');
+        header.className = 'pin-group-header';
+        header.innerHTML = `<span class="pin-group-title">${label}</span><span class="pin-group-meta"><span class="pin-group-count">${items.length}</span><span class="pin-group-arrow">▼</span></span>`;
+        header.onclick = () => group.classList.toggle('open');
+
+        const body = document.createElement('div');
+        body.className = 'pin-group-body';
+        const ul = document.createElement('ul');
+
+        items.forEach(({ m, canDelete }) => {
+          const li = document.createElement('li');
+          li.onclick = () => focusOnMarker(m);
+          const titleSpan = document.createElement('span');
+          titleSpan.className = 'pin-name';
+          titleSpan.innerText = `${icons[m.type]} ${m.name}`;
+          li.appendChild(titleSpan);
           if (canDelete) {
             const delBtn = document.createElement('button');
             delBtn.className = 'delete-btn danger outline';
             delBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>';
-            delBtn.onclick = (e) => {
-              deleteLocalMarker(e, m.id);
-            };
+            delBtn.onclick = (e) => deleteLocalMarker(e, m.id);
             li.appendChild(delBtn);
           }
+          ul.appendChild(li);
+        });
 
-          if (m.type === 'location') locationsPinList.appendChild(li);
-          else globalPinList.appendChild(li);
-        }
+        body.appendChild(ul);
+        group.appendChild(header);
+        group.appendChild(body);
+        pinGroupsContainer.appendChild(group);
       });
     }
 
