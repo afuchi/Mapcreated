@@ -1,69 +1,78 @@
-# Miscreated Intel Map — v3.3
+# 🗺️ Miscreated Intel Map — v4.4.4 "Ultimate Edition"
 
-An interactive, browser-based intelligence map for the survival game **Miscreated**.
-
----
-
-## Features
-
-### 🗺️ Interactive Map
-- Smooth pan and zoom with mouse wheel
-- Map is clamped to boundaries — can't pan off the edge
-- Clicking the map focuses on the selected location with a smooth animated zoom
-
-### 📍 Marker System
-- Place custom markers anywhere on the map via the **v3.3** panel
-- Choose from 14 marker types: 🚗 Car, 🏰 Military, 🧱 Bunker, ⛺ Tent, 🕳️ Cave, 📦 Stash, 🛩️ Wreck, ⛽ Gas, 🗼 Tower, 🚇 Tunnel, 📍 Location, 🏠 Base, ⛵ Boat, 🔫 Weapon
-- Custom marker name and optional image attachment
-- Drag and drop any marker to reposition it on the map
-
-### 📋 Sidebar — Collapsible Groups
-- All pins are organized into **collapsible type groups** (e.g. Bunkers, Boats, Gas Stations)
-- Each group shows a live **count badge**
-- Click a group header to expand or collapse it
-- Delete individual custom (Shared Live) markers directly from the list
-
-### 🔍 Filters
-- Toggle individual pin types on/off with checkboxes in a **2-column grid**
-- **Show All** — checks all filters at once
-- **Clear Filters** — unchecks all filters at once
-
-### 📐 Smart Pin Scaling
-- Pins automatically scale down as you zoom in, so they never obscure the map beneath them
-
-### 🌐 Wiki Integration
-- Clicking a 📍 Location pin fetches a live summary and image from the [Miscreated Wiki](https://miscreated.fandom.com) and displays it in an info card
-
-### 🔄 Shared Live Data (requires Python server)
-- Markers placed are synced to a local backend (`shared_pins.json`) in real time
-- Polling every 3 seconds keeps all connected users in sync
-- **Purge Shared Data** button wipes all custom markers for everyone
+An advanced, high-performance intelligence mapping suite for **Miscreated**, built for tactical coordination and long-term world persistence.
 
 ---
 
-## Running Locally
+## ✨ Features
 
-Requires **Python 3.8+**.
+### 📍 Tactical Marker System
+- **14+ Marker Types**: Track 🚗 Vehicles, 🏰 Military bases, 🧱 Bunkers, 📦 Stashes, ⛵ Boats, and more.
+- **Dynamic Context**: Automated **Wiki Integration** fetches live summaries and images from the official Miscreated Fandom Wiki for any location (including user-created ones!).
+- **Interactivity**: Fluid drag-and-drop repositioning for all custom markers.
+- **Progression**: Mark pins as "Found" or "Tracked" to visually dim them and keep your map clean.
 
-1. Run the setup script to install dependencies:
+### 👥 Diplomacy & Relations
+- **Faction Tracking**: Dedicated tab for managing player and clan relations.
+- **Status Tags**: Categorize contacts as 🟢 Ally, 🔴 Hostile, or ⚪ Neutral with Nap (Non-Aggression Pact) support.
+- **Encounter Notes**: Store detailed intel on player encounters, gear, and known locations.
+
+### 🔍 Search & Filtering
+- **Global Search**: Instantly find markers or player relations by name, type, or notes.
+- **Smart Filtering**: Multi-column filter grid with "Hide Found" toggle to focus only on what remains to be discovered.
+- **Collapsible Groups**: Markers are organized into clean, categorized groups with live count badges.
+
+### ⚡ Performance & UX
+- **Glassmorphic UI**: Premium dark mode design with cinematic typography (`Cinzel`) and smooth transitions.
+- **Smart Scaling**: Map markers automatically scale inversely to zoom levels, ensuring they never block your view.
+- **Clamped Navigation**: Precise pan/zoom (via `Panzoom`) with boundary enforcement.
+
+---
+
+## 🚀 Getting Started
+
+The Intel Map can be run as a **Collaborative Server** (Synced) or a **Static Portfolio** (GitHub Pages).
+
+### 🖥️ Running as a Collaborative Server (Recommended)
+This mode allows multiple users to view and edit the same map state in real-time.
+
+**Requirements**: Python 3.9+
+
+1. **Initialize Environment**:
    ```powershell
    ./setup_env.ps1
    ```
-
-2. Start the server:
+2. **Launch Server**:
    ```powershell
-   ./venv/Scripts/python server.py
+   python server.py
    ```
+3. **Access**: Navigate to `http://localhost:8000` in your browser.
 
-3. Open your browser and go to `http://localhost:8000`
+### 🌐 Static Hosting (GitHub Pages)
+The map is fully compatible with static hosting. Changes are persisted to the browser's `localStorage` and can be exported as a JSON file.
+
+- **Import/Export**: Use the **Settings ⚙️** tab to export your `shared_pins.json` for manual backup or repository syncing.
+- **Fallback**: If the API is unavailable, the map seamlessly transitions to local storage mode.
 
 ---
 
-## Static Hosting (GitHub Pages)
+## 🛠️ Technology Stack
+- **Frontend**: Vanilla JavaScript (ES6+), HTML5, CSS3 (Custom Glassmorphism)
+- **Engine**: [Panzoom.js](https://github.com/timmywil/panzoom) for high-performance map interaction.
+- **Backend**: FastAPI (Python) for real-time synchronization.
+- **Data**: JSON-based persistence (`shared_pins.json` & `dataset.json`).
+- **Scraper**: BeautifulSoup4 for on-the-fly Wiki intel.
 
-The map works without a Python backend on static hosts like **GitHub Pages**.
+---
 
-- On GitHub Pages, only `shared_pins.json` is loaded — this is the single source of truth for all pins displayed
-- To update pins on GitHub Pages, run the server locally, position your pins, then push `shared_pins.json` to GitHub
+## 📂 Project Structure
+- `index.html`: The core application and UI logic (2000+ lines of optimized code).
+- `server.py`: FastAPI backend handling Wiki scraping and JSON persistence.
+- `shared_pins.json`: The live database of player-created markers and diplomacy.
+- `dataset.json`: Static database of hardcoded world locations.
+- `map.jpg`: High-resolution Orca Island / Miscreated world map.
 
-> **Note:** Live sharing and drag-save features require the Python server to be running.
+---
+
+> [!TIP]
+> **Pro-Tip**: When creating a pin for a town like "Woodhaven", naming it exactly after the location will automatically trigger the Wiki Context scraper, providing you with lore and reference images instantly.

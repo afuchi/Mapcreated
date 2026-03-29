@@ -9,6 +9,7 @@ import uvicorn
 import requests
 import urllib.parse
 from bs4 import BeautifulSoup
+import re
 
 app = FastAPI()
 
@@ -202,42 +203,77 @@ def get_wiki_info(location: str):
     if location in WIKI_CACHE:
         return WIKI_CACHE[location]
 
-    try:
-        url = f"https://miscreated.fandom.com/api.php?action=parse&page={urllib.parse.quote(location)}&prop=text&format=json"
-        res = requests.get(url, timeout=5)
-        data = res.json()
-        if 'parse' not in data: 
-            return {"error": "No wiki page found for this location."}
-        
-        html = data['parse']['text']['*']
-        soup = BeautifulSoup(html, 'html.parser')
-        
-        # Remove infoboxes and navboxes
-        for unwanted in soup.find_all(['aside', 'table']):
-            unwanted.decompose()
+    # Skip generic names that won't have unique wiki pages
+    blocked_names = [
+        "car", "vehicle spawn", "tent", "tents", "cave", "stash", "hidden stash",
+        "my base", "base", "wreck", "gas station", "tower", "tunnel", 
+        "point of interest", "boat spawn", "weapon cache", "military outpost", "bunker",
+        "unknown", "new marker", "house", "crate", "loot"
+    ]
+    if location.lower() in blocked_names:
+        return {"error": "Generic name skipped"}
+
+    def scrap_page(query: str):
+        try:
+            url = f"https://miscreated.fandom.com/api.php?action=parse&page={urllib.parse.quote(query)}&prop=text&format=json"
+            res = requests.get(url, timeout=5)
+            data = res.json()
+            if 'parse' not in data: 
+                return None
             
-        summary_parts = []
-        for p in soup.find_all('p'):
-            text = p.get_text().strip()
-            if text:
-                summary_parts.append(text)
-            if len("\n\n".join(summary_parts)) > 150:
-                break
-        summary = "\n\n".join(summary_parts).strip()
-                
-        # Try to find an image
-        image = None
-        img_tag = soup.find('img', class_='pi-image-thumbnail') or soup.find('img', class_='thumbimage') or soup.find('img')
-        if img_tag and (img_tag.has_attr('src') or img_tag.has_attr('data-src')):
-            raw_src = img_tag.get('data-src') or img_tag.get('src')
-            if raw_src and raw_src.startswith('http'):
-                image = raw_src.split('/revision/latest')[0]
-                
-        result = {"summary": summary, "image": image}
-        WIKI_CACHE[location] = result
-        return result
-    except Exception as e:
-        return {"error": str(e)}
+            html = data['parse']['text']['*']
+            soup = BeautifulSoup(html, 'html.parser')
+            
+            # Remove infoboxes, navboxes, and galleries
+            for unwanted in soup.find_all(['aside', 'table', 'div', 'script']):
+                if 'gallery' in unwanted.get('class', []) or 'navbox' in unwanted.get('class', []) or 'portable-infobox' in unwanted.get('class', []):
+                    unwanted.decompose()
+                elif unwanted.name == 'aside' or unwanted.name == 'table':
+                    unwanted.decompose()
+                    
+            summary_parts = []
+            for p in soup.find_all('p'):
+                text = p.get_text().strip()
+                # Remove reference brackets like [1], [12], etc.
+                text = re.sub(r'\[[0-9]+\]', '', text)
+                if text and len(text) > 20: # Skip short fragments
+                    summary_parts.append(text)
+                if len("\n\n".join(summary_parts)) > 250:
+                    break
+            summary = "\n\n".join(summary_parts).strip()
+                    
+            # Try to find a good image (thumbnail / infobox)
+            image = None
+            # Prioritize standard wiki image selectors
+            img_tag = soup.find('img', class_='pi-image-thumbnail') or soup.find('img', class_='thumbimage') or soup.find('img')
+            if img_tag and (img_tag.has_attr('src') or img_tag.has_attr('data-src')):
+                raw_src = img_tag.get('data-src') or img_tag.get('src')
+                if raw_src and raw_src.startswith('http'):
+                    # Clean up the URL to get the original/latest version
+                    image = raw_src.split('/revision/latest')[0]
+                    
+            if not summary: return None
+            return {"summary": summary, "image": image}
+        except:
+            return None
+
+    # Try direct name
+    result = scrap_page(location)
+    
+    # Try fallback: split the name and try the first word/prefix (e.g. "Woodhaven Bunker" -> "Woodhaven")
+    if not result:
+        # Check if the name contains common sub-location words
+        keywords = ["Bunker", "Tents", "Camp", "Base", "Military", "Checkpoint", "Station", "Radio"]
+        match = re.match(r"^(.+?)\s+(?:" + "|".join(keywords) + ")", location, re.IGNORECASE)
+        if match:
+            fallback_query = match.group(1).strip()
+            result = scrap_page(fallback_query)
+
+    if not result:
+        return {"error": f"No wiki page found for '{location}'."}
+        
+    WIKI_CACHE[location] = result
+    return result
 
 # Serve the static files (index.html, map.jpg, dataset.json) from the current directory
 app.mount("/", StaticFiles(directory=".", html=True), name="static")
