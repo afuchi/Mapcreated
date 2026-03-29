@@ -27,7 +27,15 @@ class Marker(BaseModel):
     type: str
     name: str
     image: Optional[str] = None
-    source: Optional[str] = "local" # We still call it local to re-use frontend styles
+    source: Optional[str] = "local"
+    found: Optional[bool] = False
+
+class Diplomacy(BaseModel):
+    id: str
+    name: str
+    status: str # ally, enemy, neutral, nap
+    notes: Optional[str] = ""
+    last_updated: Optional[str] = None
 
 DATA_FILE = "shared_pins.json"
 GLOBAL_FILE = "dataset.json"
@@ -35,6 +43,9 @@ GLOBAL_FILE = "dataset.json"
 class SharedData(BaseModel):
     markers: List[dict] = []
     deleted_ids: List[str] = []
+    diplomacy: List[dict] = []
+    deleted_diplomacy_ids: List[str] = []
+
 
     def __init__(self, **data):
         super().__init__(**data)
@@ -145,8 +156,44 @@ def delete_pin(pin_id: str):
 
 @app.post("/api/pins/purge")
 def purge_pins():
-    save_shared_data(SharedData(markers=[], deleted_ids=[]))
+    save_shared_data(SharedData(markers=[], deleted_ids=[], diplomacy=[], deleted_diplomacy_ids=[]))
     return {"status": "purged"}
+
+@app.get("/api/diplomacy")
+def get_diplomacy():
+    shared = load_shared_data()
+    return [r for r in shared.diplomacy if r["id"] not in shared.deleted_diplomacy_ids]
+
+@app.post("/api/diplomacy")
+def add_diplomacy(relation: Diplomacy):
+    shared = load_shared_data()
+    # Update or Add
+    shared.diplomacy = [r for r in shared.diplomacy if r["id"] != relation.id]
+    
+    if hasattr(relation, "model_dump"):
+        rel_dict = relation.model_dump()
+    else:
+        rel_dict = relation.dict()
+        
+    # Ensure it's not in deleted_diplomacy_ids if re-added
+    if relation.id in shared.deleted_diplomacy_ids:
+        shared.deleted_diplomacy_ids.remove(relation.id)
+        
+    shared.diplomacy.append(rel_dict)
+    save_shared_data(shared)
+    return {"status": "success", "relation": rel_dict}
+
+@app.delete("/api/diplomacy/{rel_id}")
+def delete_diplomacy(rel_id: str):
+    shared = load_shared_data()
+    shared.diplomacy = [r for r in shared.diplomacy if r["id"] != rel_id]
+    
+    # Track as deleted to ensure consistency with static mode exports
+    if rel_id not in shared.deleted_diplomacy_ids:
+        shared.deleted_diplomacy_ids.append(rel_id)
+        
+    save_shared_data(shared)
+    return {"status": "success"}
 
 WIKI_CACHE = {}
 

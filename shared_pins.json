@@ -28,15 +28,6 @@
       "source": "local"
     },
     {
-      "id": "104",
-      "x": 82.61287021283135,
-      "y": 52.305959584261906,
-      "type": "boat",
-      "name": "East Coast Boat 2",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "108",
       "x": 32.065450056106485,
       "y": 94.91528362014392,
@@ -132,15 +123,6 @@
       "y": 50.59389117051381,
       "type": "boat",
       "name": "Turtle Bay Boat",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "107",
-      "x": 3.3483813434351353,
-      "y": 45.90639902451954,
-      "type": "boat",
-      "name": "Turtle Bay North Boat",
       "image": null,
       "source": "local"
     },
@@ -258,15 +240,6 @@
       "y": 78.48235277214309,
       "type": "tower",
       "name": "Sultan Water Tower",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "173",
-      "x": 11.922220521760297,
-      "y": 51.825650276344334,
-      "type": "tower",
-      "name": "Woodhaven Comm Tower",
       "image": null,
       "source": "local"
     },
@@ -460,15 +433,6 @@
       "source": "local"
     },
     {
-      "id": "17",
-      "x": 70.38160631454691,
-      "y": 44.05749383609446,
-      "type": "bunker",
-      "name": "Orca Dam Bunker",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "7",
       "x": 27.282785890210974,
       "y": 72.72069946371768,
@@ -553,15 +517,6 @@
       "id": "1774692026005492",
       "x": 48.96353709193384,
       "y": 58.32204104878319,
-      "type": "bunker",
-      "name": "Bunker",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "177469203234077",
-      "x": 52.49887535759024,
-      "y": 65.31099328013886,
       "type": "bunker",
       "name": "Bunker",
       "image": null,
@@ -712,15 +667,6 @@
       "source": "local"
     },
     {
-      "id": "15",
-      "x": 91.02483203093223,
-      "y": 44.16378066971422,
-      "type": "bunker",
-      "name": "Cape Bay Bunker 2",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "1774700769849638",
       "x": 81.36772991279474,
       "y": 90.79425077600185,
@@ -766,42 +712,6 @@
       "source": "local"
     },
     {
-      "id": "1774700844416879",
-      "x": 74.30221460453471,
-      "y": 66.18940783690691,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774700865003645",
-      "x": 72.30866724730075,
-      "y": 61.7323642180376,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774700874030530",
-      "x": 79.73547733375108,
-      "y": 57.692492202553055,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "54",
-      "x": 68.84470144688338,
-      "y": 37.4874087797578,
-      "type": "tent",
-      "name": "North Orca Dam Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "1774700942122316",
       "x": 73.42507942639426,
       "y": 22.02457641156079,
@@ -841,15 +751,6 @@
       "id": "1774701099614615",
       "x": 63.67250380238926,
       "y": 65.99486383977971,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774700849192741",
-      "x": 70.56891355205988,
-      "y": 66.81049924422884,
       "type": "tent",
       "name": "Tents",
       "image": null,
@@ -1054,15 +955,6 @@
       "source": "local"
     },
     {
-      "id": "1774701845352492",
-      "x": 51.38322843881953,
-      "y": 70.77826988984141,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "1774701833907370",
       "x": 46.399657091192005,
       "y": 68.88741506890705,
@@ -1216,15 +1108,6 @@
       "source": "local"
     },
     {
-      "id": "59",
-      "x": 21.214247524712135,
-      "y": 70.2939199918706,
-      "type": "tent",
-      "name": "River Fork Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "36",
       "x": 13.837490827303265,
       "y": 69.97672844569593,
@@ -1275,15 +1158,6 @@
       "y": 46.27672884275417,
       "type": "tent",
       "name": "North Woodhaven Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774702255215220",
-      "x": 19.822468209449,
-      "y": 47.14963120056425,
-      "type": "tent",
-      "name": "Tents",
       "image": null,
       "source": "local"
     },
@@ -1369,27 +1243,9 @@
       "source": "local"
     },
     {
-      "id": "58",
-      "x": 37.442435898575546,
-      "y": 51.1318481107408,
-      "type": "tent",
-      "name": "Cave Park Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "1774701778866601",
       "x": 40.297415565311375,
       "y": 54.97115850062024,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774702450335464",
-      "x": 34.04563527318912,
-      "y": 48.26268604518572,
       "type": "tent",
       "name": "Tents",
       "image": null,
@@ -1471,15 +1327,6 @@
       "id": "177470251223477",
       "x": 41.43534288837766,
       "y": 40.68888154547979,
-      "type": "tent",
-      "name": "Tents",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774702522271367",
-      "x": 41.13226683801901,
-      "y": 41.617799644991294,
       "type": "tent",
       "name": "Tents",
       "image": null,
@@ -1570,15 +1417,6 @@
       "id": "1774702694982822",
       "x": 76.36917787237238,
       "y": 45.206204086367556,
-      "type": "military",
-      "name": "Military Outpost",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774702701590396",
-      "x": 70.17613543439376,
-      "y": 47.56248330690986,
       "type": "military",
       "name": "Military Outpost",
       "image": null,
@@ -1689,15 +1527,6 @@
       "y": 58.777555125457404,
       "type": "cave",
       "name": "Woodhaven Cave",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774702917309325",
-      "x": 10.464287111340704,
-      "y": 57.4634765917765,
-      "type": "cave",
-      "name": "Cave",
       "image": null,
       "source": "local"
     },
@@ -2602,15 +2431,6 @@
       "source": "local"
     },
     {
-      "id": "1774704666114446",
-      "x": 70.57183977277015,
-      "y": 44.14862244851403,
-      "type": "car",
-      "name": "Vehicle Spawn",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "177470466968637",
       "x": 68.49605474861558,
       "y": 44.25057687407018,
@@ -2791,38 +2611,11 @@
       "source": "local"
     },
     {
-      "id": "87",
-      "x": 66.67882183547843,
-      "y": 34.44878041838095,
-      "type": "car",
-      "name": "North Orca Dam Car",
-      "image": null,
-      "source": "local"
-    },
-    {
       "id": "146",
       "x": 81.95450885668278,
       "y": 30.15287182507122,
       "type": "wreck",
       "name": "Brightmoor Plane Wreck",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "106",
-      "x": 92.10577340320354,
-      "y": 46.348209334390745,
-      "type": "boat",
-      "name": "Cape Bay Shore Boat",
-      "image": null,
-      "source": "local"
-    },
-    {
-      "id": "1774705778201965",
-      "x": 21.686125744001668,
-      "y": 70.24806483844935,
-      "type": "home",
-      "name": "Home",
       "image": null,
       "source": "local"
     },
@@ -2855,12 +2648,237 @@
     },
     {
       "id": "147",
-      "x": 20.471271715211824,
-      "y": 42.97300167829915,
+      "x": 20.697545495171884,
+      "y": 41.25699210668947,
       "type": "wreck",
       "name": "West Coast Shipwreck",
       "image": null,
       "source": "local"
+    },
+    {
+      "id": "1774702255215220",
+      "x": 19.39884256665175,
+      "y": 46.021727327037155,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "54",
+      "x": 68.31532152902153,
+      "y": 36.767754275165714,
+      "type": "tent",
+      "name": "North Orca Dam Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "87",
+      "x": 66.66269929216017,
+      "y": 33.95834343761873,
+      "type": "car",
+      "name": "North Orca Dam Car",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "106",
+      "x": 91.52722293725552,
+      "y": 45.762401829593536,
+      "type": "boat",
+      "name": "Cape Bay Shore Boat",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "10",
+      "x": 46.85820189392572,
+      "y": 81.9876071160455,
+      "type": "bunker",
+      "name": "South Pinecrest Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "177469203234077",
+      "x": 52.32987996328139,
+      "y": 65.2476974777023,
+      "type": "bunker",
+      "name": "Bunker",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774701845352492",
+      "x": 51.38078345757936,
+      "y": 70.83680873836894,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702522271367",
+      "x": 41.51202482327748,
+      "y": 40.85365148083564,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700874030530",
+      "x": 79.6608324625566,
+      "y": 56.25320476744331,
+      "type": "tent",
+      "name": "Brightmoor Shore Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "104",
+      "x": 82.20513322884013,
+      "y": 52.07541709953938,
+      "type": "boat",
+      "name": "East Coast Boat 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700844416879",
+      "x": 74.30070099391769,
+      "y": 66.20881734870486,
+      "type": "tent",
+      "name": "Brightmoor Shore Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700865003645",
+      "x": 72.28702663420302,
+      "y": 61.85582807764276,
+      "type": "tent",
+      "name": "Brightmoor Coast Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774700849192741",
+      "x": 70.59487497840013,
+      "y": 67.0337362566473,
+      "type": "tent",
+      "name": "Brightmoor Coast Tents 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "1774702450335464",
+      "x": 33.9813468992248,
+      "y": 48.21538262196585,
+      "type": "tent",
+      "name": "Tents",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "15",
+      "x": 91.03076550387597,
+      "y": 43.62636650702089,
+      "type": "bunker",
+      "name": "Cape Bay Bunker 2",
+      "image": null,
+      "source": "local"
+    },
+    {
+      "id": "107",
+      "x": 7.367284180657922,
+      "y": 37.81468698073945,
+      "type": "boat",
+      "name": "Turtle Bay North Boat",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "1774704666114446",
+      "x": 69.85660819120186,
+      "y": 44.33477419472515,
+      "type": "car",
+      "name": "Vehicle Spawn",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "17",
+      "x": 70.78017892763596,
+      "y": 43.99734653921449,
+      "type": "bunker",
+      "name": "Orca Dam Bunker",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "1774702701590396",
+      "x": 70.9676750522468,
+      "y": 46.73838655078858,
+      "type": "military",
+      "name": "Military Outpost",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "59",
+      "x": 21.231647135798053,
+      "y": 70.63497197374586,
+      "type": "tent",
+      "name": "River Fork Tents",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "177478899533549",
+      "x": 27.13098337230404,
+      "y": 85.85813222137878,
+      "type": "wreck",
+      "name": "Wreck",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "1774702917309325",
+      "x": 10.55554097251668,
+      "y": 57.40422409036804,
+      "type": "cave",
+      "name": "Cave",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "173",
+      "x": -12.947634095672866,
+      "y": 44.52933079456711,
+      "type": "tower",
+      "name": "Woodhaven Comm Tower",
+      "image": null,
+      "source": "local",
+      "found": false
+    },
+    {
+      "id": "58",
+      "x": 37.22734036853321,
+      "y": 50.21846680609254,
+      "type": "tent",
+      "name": "Cave Park Tents",
+      "image": null,
+      "source": "local",
+      "found": false
     }
   ],
   "deleted_ids": [
@@ -2934,5 +2952,31 @@
     "83",
     "82",
     "8"
+  ],
+  "diplomacy": [
+    {
+      "id": "1774777466190858",
+      "name": "The Raiders",
+      "status": "enemy",
+      "notes": "KOS near Woodhaven",
+      "last_updated": "2026-03-29T09:44:26.190Z"
+    },
+    {
+      "id": "1774783518935669",
+      "name": "Friendly Phil",
+      "status": "",
+      "notes": "Gave me a can of beans near the airfield.",
+      "last_updated": "2026-03-29T11:25:18.935Z"
+    },
+    {
+      "id": "1774790463782659",
+      "name": "Bork ja gang",
+      "status": "enemy",
+      "notes": "Üle jõe metsas tahtsid mind ära süüa",
+      "last_updated": "2026-03-29T13:21:03.782Z"
+    }
+  ],
+  "deleted_diplomacy_ids": [
+    "1774777654154546"
   ]
 }
